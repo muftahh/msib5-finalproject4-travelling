@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register2Activity">
+
+    <ImageView
+        android:id="@+id/register2Img1"
+        android:src="@drawable/register_img"
+        android:layout_marginTop="50dp"
+        android:layout_width="304dp"
+        android:layout_height="326dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/register2Text1"
+        android:text="Everything's up!"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register2Img1"
+        />
+
+    <TextView
+        android:id="@+id/register2Text2"
+        android:text="@string/register2Text2"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register2Text1"
+        />
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register2BtnFinish"
+        android:text="TAKE ME TO BUX"
+        app:cornerRadius="5dp"
+        android:backgroundTint="@color/warnaBtn"
+        android:layout_marginTop="30dp"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/register2Text2"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

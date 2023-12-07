@@ -1,18 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/homeHeaader"
+        android:background="@color/ungu"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <ImageButton
+
+            android:id="@+id/homeBtnKembali"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:text="Bus Travel"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@id/homeBtnKembali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <ImageButton
+            android:id="@+id/homeBtnAccount"
+            android:src="@drawable/baseline_person_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/homeFromImg"
+        android:src="@drawable/baseline_location_on_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@id/homeHeaader"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        />
+
     <TextView
+        android:id="@+id/homeTextFrom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="7dp"
+        android:text="From"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/homeFromImg"
+        app:layout_constraintStart_toEndOf="@id/homeFromImg" />
+
+    <Spinner
+        android:id="@+id/homeInputFrom"
+        android:entries="@array/NamaTerminal_array"
+        android:prompt="@string/dropdown_NamaTerminal"
+        android:layout_width="308dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextFrom"
+        app:layout_constraintStart_toEndOf="@id/homeFromImg"
+        />
+
+    <ImageView
+        android:id="@+id/homeToImg"
+        android:src="@drawable/baseline_location_on_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/homeFromImg"
+        app:layout_constraintStart_toStartOf="@id/homeFromImg"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/homeTextTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:text="To"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/homeToImg"
+        app:layout_constraintStart_toEndOf="@id/homeToImg" />
+
+    <Spinner
+        android:id="@+id/homeInputTo"
+        android:entries="@array/NamaTerminal_array"
+        android:prompt="@string/dropdown_NamaTerminal"
+        android:layout_width="308dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextTo"
+        app:layout_constraintStart_toEndOf="@id/homeToImg"
+        />
+
+    <ImageView
+        android:id="@+id/homeCalendarImg"
+        android:src="@drawable/baseline_calendar_month_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/homeToImg"
+        app:layout_constraintTop_toBottomOf="@+id/homeToImg"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/homeTextDateGo"
+        android:text="Date"
+        android:textSize="12sp"
+        android:layout_marginStart="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/homeCalendarImg"
+        app:layout_constraintBottom_toTopOf="@id/homeCalendarImg"
+        />
+
+    <TextView
+        android:id="@+id/homeTextInputDateGo"
+        android:text="DD MMM YYYY"
+        android:layout_marginStart="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/homeCalendarImg"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextDateGo"
+        />
+
+    <ImageButton
+        android:id="@+id/homeBtnInputDateGo"
+        android:src="@drawable/baseline_arrow_drop_down_circle_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="7dp"
+        app:layout_constraintStart_toEndOf="@id/homeTextInputDateGo"
+        app:layout_constraintTop_toTopOf="@id/homeCalendarImg"
+        android:background="?selectableItemBackgroundBorderless"
+        />
+
+    <ImageButton
+        android:id="@+id/homeBtnInputDateReturn"
+        android:src="@drawable/baseline_arrow_drop_down_circle_24"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/homeInputTo"
+        app:layout_constraintTop_toTopOf="@id/homeCalendarImg"
+        android:background="?selectableItemBackgroundBorderless"
+        />
+
+    <TextView
+        android:id="@+id/homeTextInputDateReturn"
+        android:text="DD MMM YYYY"
+        android:layout_marginEnd="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/homeBtnInputDateReturn"
+        app:layout_constraintTop_toTopOf="@id/homeCalendarImg"
+        />
+
+    <TextView
+        android:text="Return"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/homeTextInputDateReturn"
+        app:layout_constraintBottom_toTopOf="@+id/homeTextInputDateReturn"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/homeBtnSearch"
+        android:text="SEARCH"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/warnaBtn"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/homeCalendarImg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/homeTextOffer"
+        android:text="Offer"
+        android:textSize="20sp"
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/homeBtnSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/homeBusImg"
+        android:src="@drawable/bus"
+        android:layout_width="158dp"
+        android:layout_height="156dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/homeCalendarImg"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="fitXY"
+        />
+
+    <TextView
+        android:id="@+id/homeTextCode"
+        android:text="Code"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/homeBusImg"
+        app:layout_constraintStart_toStartOf="@+id/homeTextInputDateReturn"
+        />
+
+    <TextView
+        android:id="@+id/homeTextMobbuss"
+        android:text="MOBBUS"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextCode"
+        app:layout_constraintStart_toStartOf="@id/homeTextCode"
+        />
+
+    <TextView
+        android:id="@+id/homeTextUTC"
+        android:text="Use This Code"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#d1675a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextMobbuss"
+        app:layout_constraintStart_toStartOf="@+id/homeTextMobbuss"
+        />
+
+    <TextView
+        android:id="@+id/homeTextPenjelaasan"
+        android:text="@string/penjelassan"
+        android:textSize="10sp"
+        android:layout_marginTop="20dp"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/homeTextUTC"
+        app:layout_constraintStart_toStartOf="@+id/homeTextUTC"
+        app:layout_constraintEnd_toEndOf="@+id/homeBtnInputDateReturn"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

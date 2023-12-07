@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Travelling</string>
+    <string name="penjelassan">BUSSMOB is an innovative solution in the transportation industry that allows passengers to book bus tickets easily and efficiently via a mobile application.</string>
+    <string name="welcomeText2">Bux is a online booking service for Bus transportation. login now to user Bux services.</string>
+    <string name="register1Text2">Fill your phone number, email, and password below, so we can easily catch you up.</string>
+    <string name="register2Text2">You are all set and ready to use Bux. Enjoy our service!</string>
+    <string name="loginText2">Enter your email and password correctly to login to Bux</string>
+    <!-- ......................................................... -->
+    <string name="dropdown_NamaTerminal">Sektor Usaha</string>
+    <string-array name="NamaTerminal_array">
+        <item>Pilih</item>
+        <item>Terminal 1</item>
+        <item>Terminal 2</item>
+        <item>Terminal 3</item>
+        <item>Terminal 4</item>
+        <item>Terminal 5</item>
+        <item>Terminal 6</item>
+    </string-array>
+    <!-- ......................................................... -->
 </resources>
