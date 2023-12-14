@@ -11,11 +11,12 @@
         android:id="@+id/homeHeaader"
         android:background="@color/ungu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="90dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
+        >
 
         <ImageButton
 

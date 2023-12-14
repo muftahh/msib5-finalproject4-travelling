@@ -3,6 +3,7 @@ package com.hacktiv8.travelling3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -65,16 +66,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void searchTicket() {
-        String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
-        String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
         String mInputFrom = homeInputFrom.getSelectedItem().toString();
         String mInputTo = homeInputTo.getSelectedItem().toString();
+        String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
+        String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
 
         //testing
         System.out.println(mHomeTextInputDateReturn);
         System.out.println(mHomeTextInputDateGo);
         System.out.println(mInputFrom);
         System.out.println(mInputTo);
+
+        Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);
+        intent.putExtra("mInputFrom", mInputFrom);
+        intent.putExtra("mInputTo", mInputTo);
+        intent.putExtra("mHomeTextInputDateGo", mHomeTextInputDateGo);
+        startActivity(intent);
     }
 
     private void showDateDialogGo(){
