@@ -2,6 +2,7 @@
 package com.hacktiv8.travelling3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
+
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
 
@@ -27,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dateFormatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
@@ -43,6 +49,23 @@ public class MainActivity extends AppCompatActivity {
         homeBtnInputDateGo = findViewById(R.id.homeBtnInputDateGo);
         homeBtnInputDateReturn = findViewById(R.id.homeBtnInputDateReturn);
         homeBtnSearch = findViewById(R.id.homeBtnSearch);
+
+        auth = FirebaseAuth.getInstance();
+
+        homeBtnKembali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lakukan logout dari Firebase
+                auth.signOut();
+
+                // Pindahkan ke SplashScreenActivity
+                Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
+                // Tambahkan flag untuk membersihkan tumpukan aktivitas sebelumnya
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish(); // Akhiri aktivitas saat ini
+            }
+        });
 
         homeBtnInputDateGo.setOnClickListener(new View.OnClickListener() {
             @Override
