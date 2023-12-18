@@ -4,5 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     
     <color name="warnaBtn">#383b54</color>
-    <color name="ungu">#9f16ff</color>
+    <color name="ungu">#BA00FE</color>
+    <color name="gray">#D5D6D6</color>
+    <color name="bg_gray">#EDEFEF</color>
+    <color name="text_gray">#656565</color>
+
 </resources>
