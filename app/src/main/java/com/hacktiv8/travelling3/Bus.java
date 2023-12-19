@@ -1,8 +1,24 @@
 package com.hacktiv8.travelling3;
 
 public class Bus {
-    private String pt_name, price, facility, departure, travel_time, city_to;
+    private String pt_name, price, facility, departure, travel_time, city_to, city_from, date;
     private int number_seats, number_beds;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCity_from() {
+        return city_from;
+    }
+
+    public void setCity_from(String city_from) {
+        this.city_from = city_from;
+    }
 
     public String getCity_to() {
         return city_to;

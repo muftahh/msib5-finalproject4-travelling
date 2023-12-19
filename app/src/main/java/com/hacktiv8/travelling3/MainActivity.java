@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         String mInputTo = homeInputTo.getSelectedItem().toString();
         String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
         String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
-        if (mInputFrom.equals("Pilih") || mInputTo.equals("Pilih")){
+        if (mInputFrom.equals("Pilih") || mInputTo.equals("Pilih") || mHomeTextInputDateGo.equals("DD MMM YYYY") ){
             Toast.makeText(MainActivity.this, "Silahkan pilih Tujuan", Toast.LENGTH_SHORT).show();
         }else {
             Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);

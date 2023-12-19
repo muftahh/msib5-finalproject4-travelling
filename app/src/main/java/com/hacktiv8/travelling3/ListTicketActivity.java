@@ -62,8 +62,14 @@ public class ListTicketActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
                     Bus bus = dataSnapshot.getValue(Bus.class);
-                    list.add(bus);
+                    if (inputFrom.equals(bus.getCity_from())
+                            && inputTo.equals(bus.getCity_to())
+                            && date.equals(bus.getDate())){
+
+                        list.add(bus);
+                    }
 
                 }
                 busAdapter.notifyDataSetChanged();
