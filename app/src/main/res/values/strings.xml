@@ -19,9 +19,9 @@
         <item>Jakarta</item>
         <item>Surabaya</item>
         <item>Medan</item>
-        <item>Terminal 4</item>
-        <item>Terminal 5</item>
-        <item>Terminal 6</item>
+        <item>Purwokerto</item>
+        <item>Bandung</item>
+        <item>Malang</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
