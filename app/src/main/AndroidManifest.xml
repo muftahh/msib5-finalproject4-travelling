@@ -16,6 +16,18 @@
         android:theme="@style/Theme.Travelling"
         tools:targetApi="31">
         <activity
+            android:name=".YourTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FinalTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailPaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderActivity"
             android:exported="false" />
         <activity
@@ -23,6 +35,9 @@
             android:exported="false" />
         <activity
             android:name=".BusSeatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListKursiActivity"
             android:exported="false" />
         <activity
             android:name=".ListTicketActivity"

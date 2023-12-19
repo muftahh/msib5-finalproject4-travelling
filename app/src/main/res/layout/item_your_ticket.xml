@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/headerYourTicket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/your_ticket_header"
+            >
+
+            <TextView
+                android:id="@+id/tv_tglYourTicket"
+                android:text="23 JUL 2019. 17.54"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/tv_noYourTicket"
+                android:text="Book No. 00000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_namaBisYT"
+            android:text="Sempati Star"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/ungu"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerYourTicket"
+            />
+
+        <TextView
+            android:id="@+id/tv_kodeBisYT"
+            android:text="P1923NM"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_namaBisYT"
+            app:layout_constraintBottom_toBottomOf="@id/tv_namaBisYT"
+            />
+
+        <TextView
+            android:id="@+id/tv_jamBerangkatYT"
+            android:text="12:12"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_namaBisYT"
+            app:layout_constraintTop_toBottomOf="@id/tv_namaBisYT"
+            />
+
+        <TextView
+            android:id="@+id/tv_namaTerminalYT"
+            android:text="Terminal Amplas"
+            android:textSize="15sp"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_jamBerangkatYT"
+            app:layout_constraintBottom_toBottomOf="@id/tv_jamBerangkatYT"
+            />
+
+        <TextView
+            android:id="@+id/tv_tujuanBisYT"
+            android:text="Medan"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_namaTerminalYT"
+            app:layout_constraintTop_toBottomOf="@id/tv_namaTerminalYT"
+            />
+
+        <TextView
+            android:id="@+id/tv_statusPembayaranYT"
+            android:text="Paid"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#61CA5F"
+            android:layout_marginEnd="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_namaTerminalYT"
+            />
+
+        <ImageView
+            android:id="@+id/img_statusPembayaranYT"
+            android:src="@drawable/baseline_check_circle_outline_24"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@id/tv_statusPembayaranYT"
+            app:layout_constraintBottom_toBottomOf="@id/tv_statusPembayaranYT"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

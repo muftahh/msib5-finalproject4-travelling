@@ -43,6 +43,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 applyClickEffect(order);
+                Intent intent = new Intent(OrderActivity.this, DetailPaymentActivity.class);
+                startActivity(intent);
             }
         });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
