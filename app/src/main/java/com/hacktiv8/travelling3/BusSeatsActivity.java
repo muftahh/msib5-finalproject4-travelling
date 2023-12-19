@@ -8,15 +8,33 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class BusSeatsActivity extends AppCompatActivity {
 
+    private TextView ptName, tanggalWaktu, facility;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_seats);
         ImageButton done = findViewById(R.id.seat_done);
         ImageButton back = findViewById(R.id.back_bt);
+
+        ptName = findViewById(R.id.pt_name);
+        tanggalWaktu = findViewById(R.id.tanggal_waktu);
+        facility = findViewById(R.id.facility);
+
+        Bundle data = getIntent().getExtras();
+        String key = data.getString("key");
+        String date = data.getString("date");
+        String pt_name = data.getString("pt_name");
+        String price = data.getString("price");
+        String fasilityEt = data.getString("fasility");
+        String departure = data.getString("departure");
+
+        ptName.setText(pt_name);
+        tanggalWaktu.setText(departure + "/" + date);
+        facility.setText(fasilityEt);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
         String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
         if (mInputFrom.equals("Pilih") || mInputTo.equals("Pilih") || mHomeTextInputDateGo.equals("DD MMM YYYY") ){
-            Toast.makeText(MainActivity.this, "Silahkan pilih Tujuan", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Silahkan pilih Tujuan dan tanggal", Toast.LENGTH_SHORT).show();
         }else {
             Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);
             intent.putExtra("mInputFrom", mInputFrom);

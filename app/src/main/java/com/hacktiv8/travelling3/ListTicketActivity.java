@@ -101,6 +101,12 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
         Bus busSelected = list.get(position);
         Intent intent = new Intent(this, BusSeatsActivity.class);
         intent.putExtra("key", busSelected.getKey());
+        intent.putExtra("pt_name", busSelected.getPt_name());
+        intent.putExtra("date", busSelected.getDate());
+        intent.putExtra("price", busSelected.getPrice());
+        intent.putExtra("fasility", busSelected.getFacility());
+        intent.putExtra("departure", busSelected.getDeparture());
+
         startActivity(intent);
     }
 }
