@@ -101,9 +101,6 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(mInputTo);
 
         Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);
-        intent.putExtra("mInputFrom", mInputFrom);
-        intent.putExtra("mInputTo", mInputTo);
-        intent.putExtra("mHomeTextInputDateGo", mHomeTextInputDateGo);
         startActivity(intent);
     }
 

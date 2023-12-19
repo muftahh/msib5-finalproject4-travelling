@@ -122,14 +122,14 @@
                />
 
             <TextView
-                android:id="@+id/vnum"
+                android:id="@+id/vnum2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="2. When you asked what Payment, Answer Bux."
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/vnum"
+                android:id="@+id/vnum3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -147,18 +147,19 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/vnum"
+                android:id="@+id/vnum4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="4. You're gonna be charged as much as the total payment. (as you can see in this header)"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/vnum"
+                android:id="@+id/vnum5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="5. Keep the receipt, in case you're having problem with payment verification"@color/black"/>
+                android:text="5. Keep the receipt, in case you're having problem with payment verification"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

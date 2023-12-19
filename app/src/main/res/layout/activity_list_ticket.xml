@@ -74,19 +74,21 @@
             android:layout_marginHorizontal="5dp"
             />
         <Button
+            android:id="@+id/listticket_btn1"
             android:text="00"
             android:backgroundTint="@color/ungu"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             />
+
         <Button
-            android:text="00"
-            android:backgroundTint="@color/ungu"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
-            />
+            android:backgroundTint="@color/ungu"
+            android:text="00" />
+
         <Button
             android:text="00"
             android:backgroundTint="@color/ungu"
