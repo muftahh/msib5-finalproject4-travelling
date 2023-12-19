@@ -55,7 +55,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
             pt_name = itemView.findViewById(R.id.itemLT_namaBis);
             price = itemView.findViewById(R.id.itemLT_hargaBis);
             fasility = itemView.findViewById(R.id.itemLT_fasilitasBis);
-            departure = itemView.findViewById(R.id.itemLT_jlmWaktuBis);
+            departure = itemView.findViewById(R.id.itemLT_departure);
             travel_time = itemView.findViewById(R.id.itemLT_jlmWaktuBis);
             number_seat = itemView.findViewById(R.id.number_seat);
             number_bed = itemView.findViewById(R.id.number_bed);

@@ -48,33 +48,13 @@
             />
 
         <TextView
-            android:id="@+id/itemLT_waktuBerangkatBis"
-            android:text="00.00 PM"
+            android:id="@+id/itemLT_departure"
+            android:text="07.00 ---- 16.00 WIB"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/itemLT_jlmWaktuBis"
             app:layout_constraintStart_toStartOf="@id/itemLT_jlmWaktuBis"
-            />
-
-        <TextView
-            android:id="@+id/batas1"
-            android:text=" ---- "
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/itemLT_jlmWaktuBis"
-            app:layout_constraintStart_toEndOf="@id/itemLT_waktuBerangkatBis"
-            />
-
-        <TextView
-            android:id="@+id/itemLT_waktuSampaiBis"
-            android:text="00.00 AM"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/itemLT_jlmWaktuBis"
-            app:layout_constraintStart_toEndOf="@id/batas1"
             />
 
         <TextView
@@ -85,7 +65,7 @@
             android:text="RP. 000K"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/itemLT_waktuBerangkatBis"
+            app:layout_constraintBottom_toBottomOf="@id/itemLT_departure"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
