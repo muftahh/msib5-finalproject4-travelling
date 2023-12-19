@@ -1,4 +1,5 @@
 <resources>
+    <string name="base_url">https://hacktiv8-finalproject-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
     <string name="app_name">Travelling</string>
     <string name="penjelassan">BUSSMOB is an innovative solution in the transportation industry that allows passengers to book bus tickets easily and efficiently via a mobile application.</string>
     <string name="welcomeText2">Bux is a online booking service for Bus transportation. login now to user Bux services.</string>
@@ -15,8 +16,8 @@
     <string name="default_web_client_id">912419490581-q7slgi25ao270kadsn6a9t5pakk5mo49.apps.googleusercontent.com</string>
     <string-array name="NamaTerminal_array">
         <item>Pilih</item>
-        <item>Terminal 1</item>
-        <item>Terminal 2</item>
+        <item>Jakarta</item>
+        <item>Surabaya</item>
         <item>Terminal 3</item>
         <item>Terminal 4</item>
         <item>Terminal 5</item>

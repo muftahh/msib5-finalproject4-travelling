@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -93,18 +94,16 @@ public class MainActivity extends AppCompatActivity {
         String mInputTo = homeInputTo.getSelectedItem().toString();
         String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
         String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
+        if (mInputFrom.equals("Pilih") || mInputTo.equals("Pilih")){
+            Toast.makeText(MainActivity.this, "Silahkan pilih Tujuan", Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);
+            intent.putExtra("mInputFrom", mInputFrom);
+            intent.putExtra("mInputTo", mInputTo);
+            intent.putExtra("mHomeTextInputDateGo", mHomeTextInputDateGo);
+            startActivity(intent);
+        }
 
-        //testing
-        System.out.println(mHomeTextInputDateReturn);
-        System.out.println(mHomeTextInputDateGo);
-        System.out.println(mInputFrom);
-        System.out.println(mInputTo);
-
-        Intent intent = new Intent(MainActivity.this, ListTicketActivity.class);
-        intent.putExtra("mInputFrom", mInputFrom);
-        intent.putExtra("mInputTo", mInputTo);
-        intent.putExtra("mHomeTextInputDateGo", mHomeTextInputDateGo);
-        startActivity(intent);
     }
 
     private void showDateDialogGo(){
