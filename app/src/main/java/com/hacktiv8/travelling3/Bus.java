@@ -2,6 +2,16 @@ package com.hacktiv8.travelling3;
 
 public class Bus {
     private String pt_name, price, facility, departure, travel_time, city_to, city_from, date;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     private int number_seats, number_beds;
 
     public String getDate() {

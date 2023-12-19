@@ -16,6 +16,15 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
     Context context;
     ArrayList<Bus> list;
 
+    private  listItemClickListener mlistItemClickListener;
+    public interface listItemClickListener{
+        public void onListItemClick(View v, int position);
+    }
+
+    public void setListener(listItemClickListener listItemClickListener){
+        this.mlistItemClickListener = listItemClickListener;
+    }
+
     public BusAdapter(Context context, ArrayList<Bus> list) {
         this.context = context;
         this.list = list;
@@ -38,7 +47,6 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
         holder.travel_time.setText(bus.getTravel_time());
         holder.number_seat.setText(String.valueOf(bus.getNumber_seats()));
         holder.number_bed.setText(String.valueOf(bus.getNumber_beds()));
-
     }
 
     @Override
@@ -46,8 +54,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-
+    public  class ViewHolder extends RecyclerView.ViewHolder{
         TextView pt_name, price, fasility, number_seat, number_bed, departure, travel_time;
 
         public ViewHolder(@NonNull View itemView) {
@@ -59,6 +66,13 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
             travel_time = itemView.findViewById(R.id.itemLT_jlmWaktuBis);
             number_seat = itemView.findViewById(R.id.number_seat);
             number_bed = itemView.findViewById(R.id.number_bed);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                        mlistItemClickListener.onListItemClick(v, getAdapterPosition());
+                }
+            });
         }
     }
 }

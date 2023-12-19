@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListTicketActivity extends AppCompatActivity {
+public class ListTicketActivity extends AppCompatActivity implements BusAdapter.listItemClickListener {
 
     private RecyclerView tiketListRv;
     DatabaseReference database;
@@ -56,18 +56,19 @@ public class ListTicketActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
         busAdapter = new BusAdapter(this, list);
+        busAdapter.setListener(this);
         tiketListRv.setAdapter(busAdapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-
+                    String busKey = dataSnapshot.getKey();
                     Bus bus = dataSnapshot.getValue(Bus.class);
                     if (inputFrom.equals(bus.getCity_from())
                             && inputTo.equals(bus.getCity_to())
                             && date.equals(bus.getDate())){
-
+                        bus.setKey(busKey);
                         list.add(bus);
                     }
 
@@ -95,5 +96,11 @@ public class ListTicketActivity extends AppCompatActivity {
     }
 
 
-
-   }
+    @Override
+    public void onListItemClick(View v, int position) {
+        Bus busSelected = list.get(position);
+        Intent intent = new Intent(this, BusSeatsActivity.class);
+        intent.putExtra("key", busSelected.getKey());
+        startActivity(intent);
+    }
+}
