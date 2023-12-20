@@ -11,14 +11,16 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BusSeatsActivity extends AppCompatActivity  {
 
-    private TextView ptName, tanggalWaktu, facility, priceTv;
+    private TextView ptName, tanggalWaktu, facility, priceTv, seatTv;
     private List<ImageButton> imageButtons = new ArrayList<>();
+    private List<Integer> selectedSeats = new ArrayList<>();
     private int priceFinal = 0;
     private int priceBus;
 
@@ -33,6 +35,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
         tanggalWaktu = findViewById(R.id.tanggal_waktu);
         facility = findViewById(R.id.facility);
         priceTv = findViewById(R.id.price_tv);
+        seatTv = findViewById(R.id.seat_tv);
 
         Bundle data = getIntent().getExtras();
         String key = data.getString("key");
@@ -58,8 +61,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateHasil((ImageButton) v);
-                    priceTv.setText(String.valueOf(priceFinal));
+                    handleSeatSelection((ImageButton) v, finalI);
                 }
             });
         }
@@ -82,6 +84,40 @@ public class BusSeatsActivity extends AppCompatActivity  {
         });
     }
 
+    private void handleSeatSelection(ImageButton imageButton, int seatNumber) {
+        if (imageButton.getTag() == null || !((boolean) imageButton.getTag())) {
+            if (selectedSeats.size() < 4) {
+                selectedSeats.add(seatNumber);
+                updateHasil(imageButton);
+                priceTv.setText(String.valueOf(priceFinal));
+
+                updateSeatTvText();
+
+                imageButton.setBackgroundResource(R.drawable.seat_fill);
+                imageButton.setTag(true);
+            } else {
+                Toast.makeText(this, "Anda hanya dapat memilih 4 kursi!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            selectedSeats.remove(Integer.valueOf(seatNumber));
+            updateHasil(imageButton);
+            priceTv.setText(String.valueOf(priceFinal));
+
+            updateSeatTvText();
+
+            imageButton.setBackgroundResource(R.drawable.group_15_copy_3);
+            imageButton.setTag(false);
+        }
+    }
+
+    private void updateSeatTvText() {
+        StringBuilder selectedSeatsText = new StringBuilder();
+        for (int seat : selectedSeats) {
+            selectedSeatsText.append("S").append(seat).append(" ");
+        }
+        seatTv.setText(selectedSeatsText.toString().trim());
+    }
+
     private void updateHasil(ImageButton imageButton) {
         if (imageButton.getTag() == null || !((boolean) imageButton.getTag())) {
             priceFinal += priceBus;
@@ -100,6 +136,5 @@ public class BusSeatsActivity extends AppCompatActivity  {
         clickAnimation.setDuration(100);
         view.startAnimation(clickAnimation);
     }
-
 
 }
