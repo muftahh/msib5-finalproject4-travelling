@@ -192,30 +192,35 @@
         app:layout_constraintBottom_toTopOf="@+id/homeTextInputDateReturn"
         />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/homeBtnSearch"
-        android:text="SEARCH"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        app:cornerRadius="8dp"
-        android:backgroundTint="@color/warnaBtn"
-        android:layout_marginTop="30dp"
-        app:layout_constraintTop_toBottomOf="@id/homeCalendarImg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
 
-    <TextView
-        android:id="@+id/homeTextOffer"
-        android:text="Offer"
-        android:textSize="20sp"
-        android:layout_marginTop="18dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/homeBtnSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/homeCalendarImg"
+        tools:layout_editor_absoluteX="0dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeBtnSearch"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/warnaBtn"
+            android:text="SEARCH"
+            app:cornerRadius="8dp"
+            tools:layout_editor_absoluteY="330dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMyTicket"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/warnaBtn"
+            android:text="MY TICKET"
+            app:cornerRadius="8dp"
+            tools:layout_editor_absoluteY="330dp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/homeBusImg"
@@ -230,48 +235,27 @@
         />
 
     <TextView
-        android:id="@+id/homeTextCode"
-        android:text="Code"
-        android:textSize="12sp"
+        android:id="@+id/homeTextMobbuss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/homeBusImg"
-        app:layout_constraintStart_toStartOf="@+id/homeTextInputDateReturn"
-        />
-
-    <TextView
-        android:id="@+id/homeTextMobbuss"
+        android:layout_marginBottom="12dp"
         android:text="MOBBUS"
         android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextCode"
-        app:layout_constraintStart_toStartOf="@id/homeTextCode"
-        />
-
-    <TextView
-        android:id="@+id/homeTextUTC"
-        android:text="Use This Code"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        android:textColor="#d1675a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextMobbuss"
-        app:layout_constraintStart_toStartOf="@+id/homeTextMobbuss"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/homeTextPenjelaasan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toEndOf="@+id/homeBusImg" />
 
     <TextView
         android:id="@+id/homeTextPenjelaasan"
-        android:text="@string/penjelassan"
-        android:textSize="10sp"
-        android:layout_marginTop="20dp"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/homeTextUTC"
-        app:layout_constraintStart_toStartOf="@+id/homeTextUTC"
-        app:layout_constraintEnd_toEndOf="@+id/homeBtnInputDateReturn"
-        />
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="60dp"
+        android:text="@string/penjelassan"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/homeBusImg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
