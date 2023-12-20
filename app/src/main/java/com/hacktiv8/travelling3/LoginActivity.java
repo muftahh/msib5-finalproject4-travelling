@@ -7,8 +7,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -111,7 +114,22 @@ public class LoginActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
+                                    // Handle error ketika membaca dari Realtime Database
 
+                                    // Contoh 1: Menampilkan pesan ke logcat
+                                    Log.e("DatabaseError", "Error reading from Realtime Database", error.toException());
+
+                                    // Contoh 2: Menampilkan pesan Toast kepada pengguna
+                                    Toast.makeText(LoginActivity.this, "Error reading from Realtime Database", Toast.LENGTH_SHORT).show();
+
+                                    // Contoh 3: Menampilkan pesan dialog kepada pengguna
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    builder.setTitle("Error")
+                                            .setMessage("Error reading from Realtime Database: " + error.getMessage())
+                                            .setPositiveButton("OK", null)
+                                            .show();
+
+                                    // Dan sebagainya...
                                 }
                             });
                         }
@@ -120,6 +138,23 @@ public class LoginActivity extends AppCompatActivity {
                         // Jika autentikasi gagal, handle error
                         // Misalnya, tampilkan pesan error kepada pengguna
                         // ...
+
+                        // Jika autentikasi gagal, handle error
+
+                        // Contoh 1: Menampilkan pesan ke logcat
+                        Log.e("AuthenticationError", "Firebase Authentication failed", task.getException());
+
+                        // Contoh 2: Menampilkan pesan Toast kepada pengguna
+                        Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+
+                        // Contoh 3: Menampilkan pesan dialog kepada pengguna
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setTitle("Error")
+                                .setMessage("Authentication failed: " + Objects.requireNonNull(task.getException()).getMessage())
+                                .setPositiveButton("OK", null)
+                                .show();
+
+                        // Dan sebagainya...
                     }
                 });
 
@@ -127,6 +162,20 @@ public class LoginActivity extends AppCompatActivity {
                 // Handle error saat Google Sign-In
                 // Misalnya, tampilkan pesan error kepada pengguna
                 // ...
+                // Handle error saat Google Sign-In
+
+                // Contoh 1: Menampilkan pesan ke logcat
+                Log.e("GoogleSignInError", "Google Sign-In failed", e);
+
+                // Contoh 2: Menampilkan pesan Toast kepada pengguna
+                Toast.makeText(LoginActivity.this, "Google Sign-In failed", Toast.LENGTH_SHORT).show();
+
+                // Contoh 3: Menampilkan pesan dialog kepada pengguna
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Error")
+                        .setMessage("Google Sign-In failed: " + e.getMessage())
+                        .setPositiveButton("OK", null)
+                        .show();
             }
         }
     }
