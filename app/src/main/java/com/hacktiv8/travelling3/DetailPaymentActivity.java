@@ -71,7 +71,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailPaymentActivity.this, ConfirmBooking.class);
+                Intent intent = new Intent(DetailPaymentActivity.this, MainActivity.class);
                 intent.putExtra("keyBus", key);
                 intent.putExtra("ptBus", ptName);
                 intent.putExtra("userName", name);
