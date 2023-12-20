@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:id="@+id/headerYourTicket"
@@ -20,7 +23,7 @@
             >
 
             <TextView
-                android:id="@+id/tv_tglYourTicket"
+                android:id="@+id/tv_tglBuyYourTicket"
                 android:text="23 JUL 2019. 17.54"
                 android:textSize="15sp"
                 android:textStyle="bold"
