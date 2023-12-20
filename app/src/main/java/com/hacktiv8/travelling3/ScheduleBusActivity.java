@@ -28,7 +28,34 @@ public class ScheduleBusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScheduleBusActivity.this, BusSeatsActivity.class);
+
+                // Mendapatkan data dari getIntent()
+                Bundle data = getIntent().getExtras();
+                assert data != null;
+                String key = data.getString("keyFromIntent");
+                String date = data.getString("dateFromIntent");
+                String pt_name = data.getString("ptNameFromIntent");
+                String price = data.getString("priceFromIntent");
+                String fasilityEt = data.getString("facilityFromIntent");
+                String departure = data.getString("departureFromIntent");
+                String date1 = data.getString("mHomeTextInputDateGo");
+                String inputFrom = data.getString("mInputFrom");
+                String inputTo = data.getString("mInputTo");
+
+                // Menambahkan data ke Intent
+                intent.putExtra("key", key);
+                intent.putExtra("date", date);
+                intent.putExtra("pt_name", pt_name);
+                intent.putExtra("price", price);
+                intent.putExtra("fasility", fasilityEt);
+                intent.putExtra("departure", departure);
+
+                intent.putExtra("mHomeTextInputDateGo", date1);
+                intent.putExtra("mInputFrom", inputFrom);
+                intent.putExtra("mInputTo", inputTo);
+
                 startActivity(intent);
+                finish();
             }
         });
         boarding.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +80,32 @@ public class ScheduleBusActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ScheduleBusActivity.this, OrderActivity.class);
+
+                // Mendapatkan data dari getIntent()
+                Bundle data = getIntent().getExtras();
+                assert data != null;
+                String key = data.getString("keyFromIntent");
+                String date = data.getString("dateFromIntent");
+                String pt_name = data.getString("ptNameFromIntent");
+                String price = data.getString("priceFromIntent");
+                String fasilityEt = data.getString("facilityFromIntent");
+                String departure = data.getString("departureFromIntent");
+                String date1 = data.getString("mHomeTextInputDateGo");
+                String inputFrom = data.getString("mInputFrom");
+                String inputTo = data.getString("mInputTo");
+
+                // Menambahkan data ke Intent
+                intent.putExtra("key", key);
+                intent.putExtra("date", date);
+                intent.putExtra("pt_name", pt_name);
+                intent.putExtra("price", price);
+                intent.putExtra("fasility", fasilityEt);
+                intent.putExtra("departure", departure);
+
+                intent.putExtra("mHomeTextInputDateGo", date1);
+                intent.putExtra("mInputFrom", inputFrom);
+                intent.putExtra("mInputTo", inputTo);
+
                 startActivity(intent);
             }
         });

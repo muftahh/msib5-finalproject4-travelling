@@ -77,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:text="user name"
                 android:textSize="15sp"
-
                 android:textColor="@color/black"/>
 
             <TextView

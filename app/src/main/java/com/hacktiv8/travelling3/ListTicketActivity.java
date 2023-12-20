@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -21,11 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListTicketActivity extends AppCompatActivity implements BusAdapter.listItemClickListener {
 
-    private RecyclerView tiketListRv;
     DatabaseReference database;
     BusAdapter busAdapter;
     ArrayList<Bus> list;
@@ -36,6 +32,7 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_ticket);
         Bundle data = getIntent().getExtras();
+        assert data != null;
         String date = data.getString("mHomeTextInputDateGo");
         String inputFrom = data.getString("mInputFrom");
         String inputTo = data.getString("mInputTo");
@@ -47,8 +44,7 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
         destination.setText(inputTo);
 
 
-
-        tiketListRv = findViewById(R.id.listticketRv);
+        RecyclerView tiketListRv = findViewById(R.id.listticketRv);
         String baseUrl = getResources().getString(R.string.base_url);
         database = FirebaseDatabase.getInstance(baseUrl).getReference("bus_data");
         tiketListRv.setHasFixedSize(true);
@@ -65,11 +61,17 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     String busKey = dataSnapshot.getKey();
                     Bus bus = dataSnapshot.getValue(Bus.class);
-                    if (inputFrom.equals(bus.getCity_from())
-                            && inputTo.equals(bus.getCity_to())
-                            && date.equals(bus.getDate())){
-                        bus.setKey(busKey);
-                        list.add(bus);
+                    assert inputFrom != null;
+                    assert bus != null;
+                    if (inputFrom.equals(bus.getCity_from())) {
+                        assert inputTo != null;
+                        if (inputTo.equals(bus.getCity_to())) {
+                            assert date != null;
+                            if (date.equals(bus.getDate())) {
+                                bus.setKey(busKey);
+                                list.add(bus);
+                            }
+                        }
                     }
 
                 }
@@ -85,12 +87,9 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
 
         ImageButton back = findViewById(R.id.back_bt);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListTicketActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(ListTicketActivity.this, MainActivity.class);
+            startActivity(intent);
         });
 
     }
@@ -99,6 +98,13 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
     @Override
     public void onListItemClick(View v, int position) {
         Bus busSelected = list.get(position);
+
+        Bundle data = getIntent().getExtras();
+        assert data != null;
+        String date = data.getString("mHomeTextInputDateGo");
+        String inputFrom = data.getString("mInputFrom");
+        String inputTo = data.getString("mInputTo");
+
         Intent intent = new Intent(this, BusSeatsActivity.class);
         intent.putExtra("key", busSelected.getKey());
         intent.putExtra("pt_name", busSelected.getPt_name());
@@ -106,6 +112,11 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
         intent.putExtra("price", busSelected.getPrice());
         intent.putExtra("fasility", busSelected.getFacility());
         intent.putExtra("departure", busSelected.getDeparture());
+
+        intent.putExtra("mHomeTextInputDateGo", date);
+        intent.putExtra("mInputFrom", inputFrom);
+        intent.putExtra("mInputTo", inputTo);
+
 
         startActivity(intent);
     }
