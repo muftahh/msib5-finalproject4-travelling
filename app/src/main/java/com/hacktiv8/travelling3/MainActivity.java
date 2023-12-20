@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner homeInputFrom, homeInputTo;
     private TextView homeTextInputDateGo, homeTextInputDateReturn;
     private ImageButton homeBtnInputDateGo, homeBtnInputDateReturn;
-    private MaterialButton homeBtnSearch;
+    private MaterialButton homeBtnSearch,mBtnMyTicket;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -51,7 +51,15 @@ public class MainActivity extends AppCompatActivity {
         homeBtnInputDateReturn = findViewById(R.id.homeBtnInputDateReturn);
         homeBtnSearch = findViewById(R.id.homeBtnSearch);
 
+
+
         auth = FirebaseAuth.getInstance();
+
+        mBtnMyTicket = findViewById(R.id.btnMyTicket);
+        mBtnMyTicket.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, YourTicketActivity.class);
+            startActivity(intent);
+        });
 
         homeBtnKembali.setOnClickListener(new View.OnClickListener() {
             @Override
