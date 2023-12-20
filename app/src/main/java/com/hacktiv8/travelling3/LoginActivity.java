@@ -1,5 +1,8 @@
 package com.hacktiv8.travelling3;
 
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -29,7 +32,10 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     FirebaseAuth auth;
 
-    private static final int RC_SIGN_IN = 9001;
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> handleSignInResult(result.getResultCode(), result.getData())
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,17 +58,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signInWithGoogle() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
-//        Intent signInIntent = googleSignInClient.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
+        Intent signInIntent = googleSignInClient.getSignInIntent();
+        signInLauncher.launch(signInIntent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_SIGN_IN) {
+    private void handleSignInResult(int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
             try {
                 // Mendapatkan objek GoogleSignInAccount dari intent
                 GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException.class);
@@ -110,12 +111,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    // Handle error ketika membaca dari Realtime Database
-                                    // ...
+
                                 }
                             });
                         }
-                    } else {
+                    }
+                    else {
                         // Jika autentikasi gagal, handle error
                         // Misalnya, tampilkan pesan error kepada pengguna
                         // ...
