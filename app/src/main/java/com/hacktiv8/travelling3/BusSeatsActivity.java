@@ -1,9 +1,11 @@
 package com.hacktiv8.travelling3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,6 +14,12 @@ import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +31,10 @@ public class BusSeatsActivity extends AppCompatActivity  {
     private List<Integer> selectedSeats = new ArrayList<>();
     private int priceFinal = 0;
     private int priceBus;
+
+    DatabaseReference database;
+    BusAdapter busAdapter;
+    ArrayList<Seat> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +64,37 @@ public class BusSeatsActivity extends AppCompatActivity  {
         ptName.setText(pt_name);
         tanggalWaktu.setText(departure + "/" + date);
         facility.setText(fasilityEt);
+
+        String baseUrl = getResources().getString(R.string.base_url);
+        database = FirebaseDatabase.getInstance(baseUrl).getReference("bus_data").child(key).child("taken_seat");
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Seat seat = dataSnapshot.getValue(Seat.class);
+                    if (seat != null) {
+                        int seatNumber = seat.getNumber();
+                        // Ubah background dan setClickable untuk ImageButton yang sudah terpesan
+                        String idButton = "seat" + seatNumber;
+                        int resID = getResources().getIdentifier(idButton, "id", getPackageName());
+                        ImageButton button = findViewById(resID);
+
+                        // Ubah background
+                        button.setBackgroundResource(R.drawable.terpesan);
+
+                        // Set ImageButton tidak dapat diklik
+                        button.setClickable(false);
+                    }
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         for (int i = 1; i <= 24; i++) {
             String idButton = "seat" + i;
@@ -117,7 +160,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
 
     private void handleSeatSelection(ImageButton imageButton, int seatNumber) {
         if (imageButton.getTag() == null || !((boolean) imageButton.getTag())) {
-            if (selectedSeats.size() < 4) {
+            if (selectedSeats.size() < 3) {
                 selectedSeats.add(seatNumber);
                 updateHasil(imageButton);
                 priceTv.setText(String.valueOf(priceFinal));
@@ -127,7 +170,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
                 imageButton.setBackgroundResource(R.drawable.seat_fill);
                 imageButton.setTag(true);
             } else {
-                Toast.makeText(this, "Anda hanya dapat memilih 4 kursi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Anda hanya dapat memilih 3 kursi!", Toast.LENGTH_SHORT).show();
             }
         } else {
             selectedSeats.remove(Integer.valueOf(seatNumber));
