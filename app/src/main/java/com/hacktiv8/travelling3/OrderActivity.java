@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,7 @@ public class OrderActivity extends AppCompatActivity {
 
                     EditText passangerAge = findViewById(R.id.passager_age);
                     String passengerAgeStr = passangerAge.getText().toString();
-                    int passengerAge = Integer.parseInt(passengerAgeStr);
+
 
                     EditText passangerPhone = findViewById(R.id.passager_phone);
                     String passengerPhone = selectedNumber + passangerPhone.getText().toString();
@@ -101,45 +102,47 @@ public class OrderActivity extends AppCompatActivity {
 
 
                     RadioButton selectedRadioButton = findViewById(radioGroup.getCheckedRadioButtonId());
-                    String gender = selectedRadioButton.getText().toString();
+                    if (selectedNumber.isEmpty() || passengerName.isEmpty() || passengerAgeStr.isEmpty() || passengerPhone.isEmpty() || selectedRadioButton == null) {
+                        Toast.makeText(OrderActivity.this, "Masukkan data", Toast.LENGTH_SHORT).show();
+                    }else {
+                        String gender = selectedRadioButton.getText().toString();
+                        int passengerAge = Integer.parseInt(passengerAgeStr);
+                        Intent intent = new Intent(OrderActivity.this, DetailPaymentActivity.class);
 
-                    Intent intent = new Intent(OrderActivity.this, DetailPaymentActivity.class);
+                        Bundle data = getIntent().getExtras();
+                        assert data != null;
+                        String key = data.getString("key");
+                        String date = data.getString("date");
+                        String pt_name = data.getString("pt_name");
+                        String price = data.getString("price");
+                        String fasilityEt = data.getString("fasility");
+                        String departure = data.getString("departure");
 
-                    // Mendapatkan data dari getIntent()
-                    Bundle data = getIntent().getExtras();
-                    assert data != null;
-                    String key = data.getString("key");
-                    String date = data.getString("date");
-                    String pt_name = data.getString("pt_name");
-                    String price = data.getString("price");
-                    String fasilityEt = data.getString("fasility");
-                    String departure = data.getString("departure");
+                        String date1 = data.getString("mHomeTextInputDateGo");
+                        String inputFrom = data.getString("mInputFrom");
+                        String inputTo = data.getString("mInputTo");
 
-                    String date1 = data.getString("mHomeTextInputDateGo");
-                    String inputFrom = data.getString("mInputFrom");
-                    String inputTo = data.getString("mInputTo");
+                        intent.putExtra("keyFromIntent", key);
+                        intent.putExtra("dateFromIntent", date);
+                        intent.putExtra("ptNameFromIntent", pt_name);
+                        intent.putExtra("priceFromIntent", price);
+                        intent.putExtra("facilityFromIntent", fasilityEt);
+                        intent.putExtra("departureFromIntent", departure);
+                        int finalPrice = data.getInt("priceTicket");
 
-                    // Menambahkan data ke Intent
-                    intent.putExtra("keyFromIntent", key);
-                    intent.putExtra("dateFromIntent", date);
-                    intent.putExtra("ptNameFromIntent", pt_name);
-                    intent.putExtra("priceFromIntent", price);
-                    intent.putExtra("facilityFromIntent", fasilityEt);
-                    intent.putExtra("departureFromIntent", departure);
-                    int finalPrice = data.getInt("priceTicket");
+                        intent.putExtra("mHomeTextInputDateGo", date1);
+                        intent.putExtra("mInputFrom", inputFrom);
+                        intent.putExtra("mInputTo", inputTo);
 
-                    intent.putExtra("mHomeTextInputDateGo", date1);
-                    intent.putExtra("mInputFrom", inputFrom);
-                    intent.putExtra("mInputTo", inputTo);
+                        intent.putExtra("priceTicket", finalPrice);
+                        intent.putIntegerArrayListExtra("selectedSeats", (ArrayList<Integer>) selectedSeats);
 
-                    intent.putExtra("priceTicket", finalPrice);
-                    intent.putIntegerArrayListExtra("selectedSeats", (ArrayList<Integer>) selectedSeats);
-
-                    intent.putExtra("selectedNumber", passengerPhone);
-                    intent.putExtra("passengerName", passengerName);
-                    intent.putExtra("passengerAge", passengerAge);
-                    intent.putExtra("gender", gender);
-                    startActivity(intent);
+                        intent.putExtra("selectedNumber", passengerPhone);
+                        intent.putExtra("passengerName", passengerName);
+                        intent.putExtra("passengerAge", passengerAge);
+                        intent.putExtra("gender", gender);
+                        startActivity(intent);
+                    }
                 }
                 private void applyClickEffect (View view){
                     Animation clickAnimation = new AlphaAnimation(1F, 0.7F);

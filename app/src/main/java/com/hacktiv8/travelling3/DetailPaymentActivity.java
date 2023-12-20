@@ -5,8 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class DetailPaymentActivity extends AppCompatActivity {
 
     private String Seat = "";
+    private  int sumSeat= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
         TextView passangerDate = findViewById(R.id.detailPaymentDate);
         TextView passangerPrice = findViewById(R.id.detailPaymentPrice);
 
+
         Intent intent = getIntent();
         if (intent != null) {
             ArrayList<Integer> selectedSeats = intent.getIntegerArrayListExtra("selectedSeats");
@@ -37,6 +39,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
                 StringBuilder seatStringBuilder = new StringBuilder();
                 for (int seat : selectedSeats) {
                     seatStringBuilder.append(seat).append(" ");
+                    sumSeat += 1;
                 }
                 Seat = seatStringBuilder.toString().trim();
                 passangerSeat.setText(Seat);
@@ -46,6 +49,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
 
         Bundle data = getIntent().getExtras();
         assert data != null;
+        String key = data.getString("keyFromIntent");
         String name = data.getString("passengerName");
         String date = data.getString("mHomeTextInputDateGo");
         String ptName = data.getString("ptNameFromIntent");
@@ -63,9 +67,25 @@ public class DetailPaymentActivity extends AppCompatActivity {
         passangerDate.setText(date);
         passangerPrice.setText(String.valueOf(finalPrice));
 
-
-
-
+        ImageButton pay = findViewById(R.id.pay);
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailPaymentActivity.this, ConfirmBooking.class);
+                intent.putExtra("keyBus", key);
+                intent.putExtra("ptBus", ptName);
+                intent.putExtra("userName", name);
+                intent.putExtra("from", from);
+                intent.putExtra("destination", to);
+                intent.putExtra("date", date);
+                intent.putExtra("time", departure);
+                intent.putExtra("seat", Seat);
+                intent.putExtra("sumSeat", sumSeat);
+                intent.putExtra("price", finalPrice);
+                intent.putExtra("Class", "Ekonomi");
+                startActivity(intent);
+            }
+        });
 
         ConstraintLayout indomaretLayout = findViewById(R.id.indomaret);
         indomaretLayout.setOnClickListener(new View.OnClickListener() {

@@ -258,19 +258,20 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardDetailBook">
+
         <LinearLayout
             android:id="@+id/cardPaymentMethod"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:paddingHorizontal="20dp"
-            app:cardCornerRadius="5dp"
-            >
+            app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -284,16 +285,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Payment Method"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="8dp"
                     android:layout_marginTop="20dp"
-                    android:text="Choose one of payment method below to complete your transaction:"
-                   />
+                    android:paddingBottom="8dp"
+                    android:text="Choose one of payment method below to complete your transaction:" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -304,12 +304,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/indomaret"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
                         android:onClick="pay">
 
                         <ImageView
@@ -350,6 +351,36 @@
         </LinearLayout>
     </ScrollView>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <ImageButton
+            android:id="@+id/pay"
+            android:layout_width="120sp"
+            android:layout_height="45sp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/button_custom1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bayar"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/pay"
+            app:layout_constraintEnd_toEndOf="@+id/pay"
+            app:layout_constraintStart_toStartOf="@+id/pay"
+            app:layout_constraintTop_toTopOf="@+id/pay" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

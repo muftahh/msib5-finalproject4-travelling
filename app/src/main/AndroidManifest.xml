@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Travelling"
         tools:targetApi="31">
         <activity
+            android:name=".ConfirmBooking"
+            android:exported="false" />
+        <activity
             android:name=".YourTicketActivity"
             android:exported="false" />
         <activity
