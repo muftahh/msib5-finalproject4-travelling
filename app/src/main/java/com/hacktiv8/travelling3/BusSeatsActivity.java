@@ -129,7 +129,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
 
     private void handleSeatSelection(ImageButton imageButton, int seatNumber) {
         if (imageButton.getTag() == null || !((boolean) imageButton.getTag())) {
-            if (selectedSeats.size() < 4) {
+            if (selectedSeats.size() < 3) {
                 selectedSeats.add(seatNumber);
                 updateHasil(imageButton);
                 priceTv.setText(String.valueOf(priceFinal));
@@ -139,7 +139,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
                 imageButton.setBackgroundResource(R.drawable.seat_fill);
                 imageButton.setTag(true);
             } else {
-                Toast.makeText(this, "Anda hanya dapat memilih 4 kursi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Anda hanya dapat memilih 3 kursi!", Toast.LENGTH_SHORT).show();
             }
         } else {
             selectedSeats.remove(Integer.valueOf(seatNumber));
