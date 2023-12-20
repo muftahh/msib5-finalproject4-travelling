@@ -133,14 +133,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Di Pesan" />
+                android:text="Terpesan" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Di Pilih" />
+                android:text="Terpilih" />
 
             <TextView
                 android:layout_width="wrap_content"

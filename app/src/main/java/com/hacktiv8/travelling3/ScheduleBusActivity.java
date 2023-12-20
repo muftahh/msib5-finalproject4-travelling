@@ -1,6 +1,11 @@
 package com.hacktiv8.travelling3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.util.Log;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ScheduleBusActivity extends AppCompatActivity {
-
+    private List<Integer> selectedSeats = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,10 @@ public class ScheduleBusActivity extends AppCompatActivity {
         ptNameTv.setText(ptName);
         facilityTv.setText(facility);
 
+        Intent intent = getIntent();
+        if (intent != null) {
+            selectedSeats = intent.getIntegerArrayListExtra("selectedSeats");
+        }
 
         FrameLayout contentDefault = findViewById(R.id.content_frame);
         BoardingFragment boardingFragment = BoardingFragment.newInstance(keyBus);
@@ -54,6 +63,7 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 String inputFrom = data.getString("mInputFrom");
                 String inputTo = data.getString("mInputTo");
 
+
                 // Menambahkan data ke Intent
                 intent.putExtra("key", key);
                 intent.putExtra("date", date);
@@ -65,6 +75,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 intent.putExtra("mHomeTextInputDateGo", date1);
                 intent.putExtra("mInputFrom", inputFrom);
                 intent.putExtra("mInputTo", inputTo);
+
+
 
                 startActivity(intent);
                 finish();
@@ -107,6 +119,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 String date1 = data.getString("mHomeTextInputDateGo");
                 String inputFrom = data.getString("mInputFrom");
                 String inputTo = data.getString("mInputTo");
+                int finalPrice = data.getInt("priceTicket");
+
 
                 // Menambahkan data ke Intent
                 intent.putExtra("key", key);
@@ -119,6 +133,9 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 intent.putExtra("mHomeTextInputDateGo", date1);
                 intent.putExtra("mInputFrom", inputFrom);
                 intent.putExtra("mInputTo", inputTo);
+
+                intent.putExtra("priceTicket", finalPrice);
+                intent.putIntegerArrayListExtra("selectedSeats", (ArrayList<Integer>) selectedSeats);
 
                 startActivity(intent);
             }

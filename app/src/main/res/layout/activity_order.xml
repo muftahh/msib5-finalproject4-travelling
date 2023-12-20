@@ -115,7 +115,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/passanger_age"
+                    android:id="@+id/passager_age"
                     android:layout_width="65dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/gray"
@@ -124,7 +124,6 @@
                     android:inputType="number" />
 
                 <TextView
-                    android:id="@+id/textView21"
                     android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:paddingEnd="5sp"
@@ -172,7 +171,7 @@
                     android:layout_gravity="center" />
 
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/passager_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

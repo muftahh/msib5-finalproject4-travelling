@@ -73,15 +73,12 @@ public class BusSeatsActivity extends AppCompatActivity  {
                     Seat seat = dataSnapshot.getValue(Seat.class);
                     if (seat != null) {
                         int seatNumber = seat.getNumber();
-                        // Ubah background dan setClickable untuk ImageButton yang sudah terpesan
                         String idButton = "seat" + seatNumber;
                         int resID = getResources().getIdentifier(idButton, "id", getPackageName());
                         ImageButton button = findViewById(resID);
 
-                        // Ubah background
                         button.setBackgroundResource(R.drawable.terpesan);
 
-                        // Set ImageButton tidak dapat diklik
                         button.setClickable(false);
                     }
                 }
@@ -150,9 +147,14 @@ public class BusSeatsActivity extends AppCompatActivity  {
             intent.putExtra("mInputFrom", inputFrom);
             intent.putExtra("mInputTo", inputTo);
 
+            intent.putExtra("priceTicket", priceFinal);
+            intent.putIntegerArrayListExtra("selectedSeats", (ArrayList<Integer>) selectedSeats);
+
             startActivity(intent);
             applyClickEffect(done);
         });
+
+
 
     }
 
@@ -185,7 +187,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
     private void updateSeatTvText() {
         StringBuilder selectedSeatsText = new StringBuilder();
         for (int seat : selectedSeats) {
-            selectedSeatsText.append("S").append(seat).append(" ");
+            selectedSeatsText.append(seat).append(" ");
         }
         seatTv.setText(selectedSeatsText.toString().trim());
     }
