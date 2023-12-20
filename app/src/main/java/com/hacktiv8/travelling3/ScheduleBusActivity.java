@@ -20,9 +20,21 @@ public class ScheduleBusActivity extends AppCompatActivity {
         ImageButton dropping = findViewById(R.id.dropping);
         ImageButton back = findViewById(R.id.back_bt);
         TextView next = findViewById(R.id.next);
+        TextView ptNameTv = findViewById(R.id.pt_name_tv);
+        TextView facilityTv = findViewById(R.id.facility_tv);
+
+        Bundle dataEt = getIntent().getExtras();
+        String ptName = dataEt.getString("ptNameFromIntent");
+        String facility = dataEt.getString("facilityFromIntent");
+        String keyBus = dataEt.getString("keyFromIntent");
+
+        ptNameTv.setText(ptName);
+        facilityTv.setText(facility);
+
 
         FrameLayout contentDefault = findViewById(R.id.content_frame);
-        getSupportFragmentManager().beginTransaction().add(R.id.content_frame, new BoardingFragment()).commit();
+        BoardingFragment boardingFragment = BoardingFragment.newInstance(keyBus);
+        getSupportFragmentManager().beginTransaction().add(R.id.content_frame, boardingFragment).commit();
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +75,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boarding.setBackgroundResource(R.color.gray);
                 dropping.setBackgroundResource(R.color.white);
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new BoardingFragment()).commit();
+                BoardingFragment boardingFragment = BoardingFragment.newInstance(keyBus);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, boardingFragment).commit();
             }
         });
 
@@ -72,7 +85,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boarding.setBackgroundResource(R.color.white);
                 dropping.setBackgroundResource(R.color.gray);
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new DroppingFragment()).commit();
+                DroppingFragment droppingFragment = DroppingFragment.newInstance(keyBus);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, droppingFragment).commit();
             }
         });
 
@@ -110,4 +124,5 @@ public class ScheduleBusActivity extends AppCompatActivity {
             }
         });
     }
+    
 }

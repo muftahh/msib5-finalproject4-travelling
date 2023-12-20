@@ -33,8 +33,6 @@ public class BusSeatsActivity extends AppCompatActivity  {
     private int priceBus;
 
     DatabaseReference database;
-    BusAdapter busAdapter;
-    ArrayList<Seat> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
