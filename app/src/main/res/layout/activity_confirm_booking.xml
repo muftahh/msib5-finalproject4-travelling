@@ -76,41 +76,38 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/order_bt"
+        android:id="@+id/success_bt"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_custom1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-        app:layout_constraintVertical_bias="0.555" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Berhasil"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Berhasil"
-        app:layout_constraintBottom_toBottomOf="@+id/order_bt"
-        app:layout_constraintEnd_toEndOf="@+id/order_bt"
-        app:layout_constraintStart_toStartOf="@+id/order_bt"
-        app:layout_constraintTop_toTopOf="@+id/order_bt" />
+        app:layout_constraintBottom_toBottomOf="@+id/success_bt"
+        app:layout_constraintEnd_toEndOf="@+id/success_bt"
+        app:layout_constraintStart_toStartOf="@+id/success_bt"
+        app:layout_constraintTop_toTopOf="@+id/success_bt" />
 
     <ImageButton
-        android:id="@+id/order_bt2"
+        android:id="@+id/failed_bt"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_custom1"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintStart_toEndOf="@+id/order_bt"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-        app:layout_constraintVertical_bias="0.464" />
+        app:layout_constraintStart_toEndOf="@+id/success_bt"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
 
     <TextView
         android:id="@+id/textView3"
@@ -120,9 +117,9 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/order_bt2"
-        app:layout_constraintEnd_toEndOf="@+id/order_bt2"
-        app:layout_constraintStart_toStartOf="@+id/order_bt2"
-        app:layout_constraintTop_toTopOf="@+id/order_bt2" />
+        app:layout_constraintBottom_toBottomOf="@+id/failed_bt"
+        app:layout_constraintEnd_toEndOf="@+id/failed_bt"
+        app:layout_constraintStart_toStartOf="@+id/failed_bt"
+        app:layout_constraintTop_toTopOf="@+id/failed_bt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
