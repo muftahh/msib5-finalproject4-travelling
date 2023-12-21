@@ -36,7 +36,6 @@ public class FinalTicketActivity extends AppCompatActivity {
         classTicket.setText(getIntent().getStringExtra("iclassBis"));
         userNameTicket.setText(getIntent().getStringExtra("inamaPenumpang"));
         dateTicket.setText(getIntent().getStringExtra("itanggalKeberangkatan"));
-
         btJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
