@@ -37,6 +37,7 @@ public class TransactionActivity extends AppCompatActivity {
         String ptBus = data.getString("ptBus");
         String username = data.getString("userName");
         String from = data.getString("from");
+        String facility = data.getString("facility");
         String destination = data.getString("destination");
         String date = data.getString("date");
         String time = data.getString("time");
@@ -90,6 +91,7 @@ public class TransactionActivity extends AppCompatActivity {
                     ticketData.put("tujuanBis", destination);
                     ticketData.put("tanggalPembelian", tglOrder);
                     ticketData.put("nomerBooking", noBooking);
+                    ticketData.put("fasilitasBus", facility);
                     ticketData.put("keyBus", keyBus);
 
                     database.setValue(ticketData);

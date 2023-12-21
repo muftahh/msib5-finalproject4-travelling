@@ -23,15 +23,20 @@ public class ScheduleBusActivity extends AppCompatActivity {
 
         ImageButton boarding = findViewById(R.id.boarding);
         ImageButton dropping = findViewById(R.id.dropping);
-        ImageButton back = findViewById(R.id.back_bt);
-        TextView next = findViewById(R.id.next);
         TextView ptNameTv = findViewById(R.id.pt_name_tv);
         TextView facilityTv = findViewById(R.id.facility_tv);
+        ImageButton back = findViewById(R.id.back_bt);
+        TextView next = findViewById(R.id.next);
 
         Bundle dataEt = getIntent().getExtras();
         String ptName = dataEt.getString("ptNameFromIntent");
         String facility = dataEt.getString("facilityFromIntent");
         String keyBus = dataEt.getString("keyFromIntent");
+        boolean viewOnly = dataEt.getBoolean("viewOnly");
+        if (viewOnly == true){
+            next.setVisibility(View.GONE);
+            back.setVisibility(View.GONE);
+        }
 
         ptNameTv.setText(ptName);
         facilityTv.setText(facility);
@@ -55,8 +60,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 assert data != null;
                 String key = data.getString("keyFromIntent");
                 String date = data.getString("dateFromIntent");
-                String pt_name = data.getString("ptNameFromIntent");
                 String price = data.getString("priceFromIntent");
+                String pt_name = data.getString("ptNameFromIntent");
                 String fasilityEt = data.getString("facilityFromIntent");
                 String departure = data.getString("departureFromIntent");
                 String date1 = data.getString("mHomeTextInputDateGo");
@@ -67,8 +72,8 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 // Menambahkan data ke Intent
                 intent.putExtra("key", key);
                 intent.putExtra("date", date);
-                intent.putExtra("pt_name", pt_name);
                 intent.putExtra("price", price);
+                intent.putExtra("pt_name", pt_name);
                 intent.putExtra("fasility", fasilityEt);
                 intent.putExtra("departure", departure);
 
@@ -112,22 +117,22 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 assert data != null;
                 String key = data.getString("keyFromIntent");
                 String date = data.getString("dateFromIntent");
-                String pt_name = data.getString("ptNameFromIntent");
                 String price = data.getString("priceFromIntent");
+                String pt_name = data.getString("ptNameFromIntent");
                 String fasilityEt = data.getString("facilityFromIntent");
                 String departure = data.getString("departureFromIntent");
                 String date1 = data.getString("mHomeTextInputDateGo");
+                int numberSeat = data.getInt("numberSeatFromIntent");
                 String inputFrom = data.getString("mInputFrom");
                 String inputTo = data.getString("mInputTo");
-                int numberSeat = data.getInt("numberSeatFromIntent");
                 int finalPrice = data.getInt("priceTicket");
 
 
                 // Menambahkan data ke Intent
                 intent.putExtra("key", key);
                 intent.putExtra("date", date);
-                intent.putExtra("pt_name", pt_name);
                 intent.putExtra("price", price);
+                intent.putExtra("pt_name", pt_name);
                 intent.putExtra("fasility", fasilityEt);
                 intent.putExtra("departure", departure);
                 intent.putExtra("numberSeat", numberSeat);

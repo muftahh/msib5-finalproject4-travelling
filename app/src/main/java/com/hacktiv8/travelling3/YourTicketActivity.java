@@ -57,8 +57,12 @@ public class YourTicketActivity extends AppCompatActivity {
                     String tujuanBis = snapshot.child("tujuanBis").getValue(String.class);
                     String tanggalPembelian = snapshot.child("tanggalPembelian").getValue(String.class);
                     String nomerBooking = snapshot.child("nomerBooking").getValue(String.class);
+                    String fasilitasBus = snapshot.child("fasilitasBus").getValue(String.class);
+                    String keyBus = snapshot.child("keyBus").getValue(String.class);
 
-                    dataArrayList.add(new YourTicketModel(namaPenumpang, asalBis, tujuanBis, tanggalKeberangkatan, clasBis, noKursi, namaBis, jamPergi, harga, tanggalPembelian,nomerBooking));
+                    dataArrayList.add(new YourTicketModel(namaPenumpang, asalBis, tujuanBis,
+                            tanggalKeberangkatan, clasBis, noKursi, namaBis, jamPergi, harga,
+                            tanggalPembelian,nomerBooking, fasilitasBus, keyBus));
                 }
 
                 YourTicketAdapter adapter = new YourTicketAdapter(YourTicketActivity.this, R.layout.item_your_ticket, dataArrayList);
@@ -87,6 +91,8 @@ public class YourTicketActivity extends AppCompatActivity {
                 intent.putExtra("inoKursi", clickedItem.getNoKursi());
                 intent.putExtra("itanggalKeberangkatan", clickedItem.getTanggalKeberangkatan());
                 intent.putExtra("itujuanBis", clickedItem.getTujuanBis());
+                intent.putExtra("fasilitasBus", clickedItem.getFasilitasBus());
+                intent.putExtra("keyBus", clickedItem.getKeyBus());
                 startActivity(intent);
             }
         });

@@ -321,6 +321,14 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/bt_jadwal"
+                android:layout_marginVertical="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:text="Lihat Jadwal >" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -342,6 +350,7 @@
                 android:layout_height="wrap_content"
                 android:text="8 7 4 6 G 2 W 5 3 4 5 9 1 2"
                 android:textColor="@color/black"/>
+
         </LinearLayout>
 
     </LinearLayout>

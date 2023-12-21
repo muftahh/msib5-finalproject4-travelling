@@ -60,12 +60,14 @@ public class DetailPaymentActivity extends AppCompatActivity {
         String key = data.getString("keyFromIntent");
         String name = data.getString("passengerName");
         String date = data.getString("mHomeTextInputDateGo");
+        String facility = data.getString("facilityFromIntent");
         String ptName = data.getString("ptNameFromIntent");
         String from = data.getString("mInputFrom");
         String to = data.getString("mInputTo");
         String departure = data.getString("departureFromIntent");
 
         int numberSeat = data.getInt("numberSeat");
+
         int finalPrice = data.getInt("priceTicket");
 
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
@@ -96,6 +98,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
                 intent.putExtra("sumSeat", sumSeat);
                 intent.putExtra("price", finalPrice);
                 intent.putExtra("clas", "Ekonomi");
+                intent.putExtra("facility", facility);
                 intent.putExtra("numberSeat", numberSeat);
                 startActivity(intent);
             }

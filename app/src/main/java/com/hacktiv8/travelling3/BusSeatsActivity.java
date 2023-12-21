@@ -38,21 +38,21 @@ public class BusSeatsActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus_seats);
-        ImageButton done = findViewById(R.id.seat_done);
         ImageButton back = findViewById(R.id.back_bt);
+        ImageButton done = findViewById(R.id.seat_done);
 
-        ptName = findViewById(R.id.pt_name);
         tanggalWaktu = findViewById(R.id.tanggal_waktu);
         facility = findViewById(R.id.facility);
         priceTv = findViewById(R.id.price_tv);
         seatTv = findViewById(R.id.seat_tv);
+        ptName = findViewById(R.id.pt_name);
 
         Bundle data = getIntent().getExtras();
         assert data != null;
         String key = data.getString("key");
         String date = data.getString("date");
-        String pt_name = data.getString("pt_name");
         String price = data.getString("price");
+        String pt_name = data.getString("pt_name");
         String fasilityEt = data.getString("fasility");
         String departure = data.getString("departure");
 
@@ -131,8 +131,8 @@ public class BusSeatsActivity extends AppCompatActivity  {
             assert dataFromIntent != null;
             String keyFromIntent = dataFromIntent.getString("key");
             String dateFromIntent = dataFromIntent.getString("date");
-            String ptNameFromIntent = dataFromIntent.getString("pt_name");
             String priceFromIntent = dataFromIntent.getString("price");
+            String ptNameFromIntent = dataFromIntent.getString("pt_name");
             String facilityFromIntent = dataFromIntent.getString("fasility");
             String departureFromIntent = dataFromIntent.getString("departure");
             String date1 = dataFromIntent.getString("mHomeTextInputDateGo");
@@ -143,11 +143,11 @@ public class BusSeatsActivity extends AppCompatActivity  {
             // Menambahkan data ke Intent
             intent.putExtra("keyFromIntent", keyFromIntent);
             intent.putExtra("dateFromIntent", dateFromIntent);
-            intent.putExtra("ptNameFromIntent", ptNameFromIntent);
             intent.putExtra("priceFromIntent", priceFromIntent);
+            intent.putExtra("numberSeatFromIntent", numberSeat);
+            intent.putExtra("ptNameFromIntent", ptNameFromIntent);
             intent.putExtra("facilityFromIntent", facilityFromIntent);
             intent.putExtra("departureFromIntent", departureFromIntent);
-            intent.putExtra("numberSeatFromIntent", numberSeat);
 
 
             intent.putExtra("mHomeTextInputDateGo", date1);
