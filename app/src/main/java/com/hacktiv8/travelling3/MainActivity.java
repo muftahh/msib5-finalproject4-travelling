@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton homeBtnSearch,mBtnMyTicket;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
-
     private FirebaseAuth auth;
 
 

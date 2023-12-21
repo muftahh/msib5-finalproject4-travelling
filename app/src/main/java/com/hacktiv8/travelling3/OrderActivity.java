@@ -1,5 +1,6 @@
 package com.hacktiv8.travelling3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +69,7 @@ public class OrderActivity extends AppCompatActivity {
                     String fasilityEt = data.getString("fasility");
                     String departure = data.getString("departure");
 
+
                     String date1 = data.getString("mHomeTextInputDateGo");
                     String inputFrom = data.getString("mInputFrom");
                     String inputTo = data.getString("mInputTo");
@@ -72,6 +81,7 @@ public class OrderActivity extends AppCompatActivity {
                     intent.putExtra("priceFromIntent", price);
                     intent.putExtra("facilityFromIntent", fasilityEt);
                     intent.putExtra("departureFromIntent", departure);
+
 
                     intent.putExtra("mHomeTextInputDateGo", date1);
                     intent.putExtra("mInputFrom", inputFrom);
@@ -128,11 +138,13 @@ public class OrderActivity extends AppCompatActivity {
                         intent.putExtra("priceFromIntent", price);
                         intent.putExtra("facilityFromIntent", fasilityEt);
                         intent.putExtra("departureFromIntent", departure);
+                        int numberSeat = data.getInt("numberSeat");
                         int finalPrice = data.getInt("priceTicket");
 
                         intent.putExtra("mHomeTextInputDateGo", date1);
                         intent.putExtra("mInputFrom", inputFrom);
                         intent.putExtra("mInputTo", inputTo);
+                        intent.putExtra("numberSeat", numberSeat);
 
                         intent.putExtra("priceTicket", finalPrice);
                         intent.putIntegerArrayListExtra("selectedSeats", (ArrayList<Integer>) selectedSeats);
@@ -164,6 +176,8 @@ public class OrderActivity extends AppCompatActivity {
             });
 
         }
+
+
 
 
 }

@@ -5,11 +5,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DetailPaymentActivity extends AppCompatActivity {
@@ -17,10 +21,13 @@ public class DetailPaymentActivity extends AppCompatActivity {
     private String Seat = "";
     private  int sumSeat= 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_payment);
+
+
 
         TextView passangerName = findViewById(R.id.detailPaymentName);
         TextView passangerBus = findViewById(R.id.detailPaymentBusName);
@@ -38,7 +45,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
             if (selectedSeats != null && !selectedSeats.isEmpty()) {
                 StringBuilder seatStringBuilder = new StringBuilder();
                 for (int seat : selectedSeats) {
-                    seatStringBuilder.append(seat).append(" ");
+                    seatStringBuilder.append("S").append(seat).append(" ");
                     sumSeat += 1;
                 }
                 Seat = seatStringBuilder.toString().trim();
@@ -46,6 +53,7 @@ public class DetailPaymentActivity extends AppCompatActivity {
             }
 
         }
+
 
         Bundle data = getIntent().getExtras();
         assert data != null;
@@ -56,7 +64,12 @@ public class DetailPaymentActivity extends AppCompatActivity {
         String from = data.getString("mInputFrom");
         String to = data.getString("mInputTo");
         String departure = data.getString("departureFromIntent");
+
+        int numberSeat = data.getInt("numberSeat");
         int finalPrice = data.getInt("priceTicket");
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        String formattedPrice = decimalFormat.format(finalPrice);
 
         passangerName.setText(name);
         passangerBus.setText(ptName);
@@ -65,13 +78,13 @@ public class DetailPaymentActivity extends AppCompatActivity {
         passangerTo.setText(to);
         passangerTime.setText(departure);
         passangerDate.setText(date);
-        passangerPrice.setText(String.valueOf(finalPrice));
+        passangerPrice.setText(formattedPrice);
 
         ImageButton pay = findViewById(R.id.pay);
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailPaymentActivity.this, MainActivity.class);
+                Intent intent = new Intent(DetailPaymentActivity.this, TransactionActivity.class);
                 intent.putExtra("keyBus", key);
                 intent.putExtra("ptBus", ptName);
                 intent.putExtra("userName", name);
@@ -82,7 +95,8 @@ public class DetailPaymentActivity extends AppCompatActivity {
                 intent.putExtra("seat", Seat);
                 intent.putExtra("sumSeat", sumSeat);
                 intent.putExtra("price", finalPrice);
-                intent.putExtra("Class", "Ekonomi");
+                intent.putExtra("clas", "Ekonomi");
+                intent.putExtra("numberSeat", numberSeat);
                 startActivity(intent);
             }
         });

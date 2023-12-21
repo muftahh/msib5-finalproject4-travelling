@@ -1,17 +1,12 @@
 package com.hacktiv8.travelling3;
 
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -35,10 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient googleSignInClient;
     FirebaseAuth auth;
 
-    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> handleSignInResult(result.getResultCode(), result.getData())
-    );
+    private static final int RC_SIGN_IN = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void signInWithGoogle() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
-        signInLauncher.launch(signInIntent);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void handleSignInResult(int resultCode, Intent data) {
-        if (resultCode == RESULT_OK) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
             try {
                 // Mendapatkan objek GoogleSignInAccount dari intent
                 GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data).getResult(ApiException.class);
@@ -84,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                         boolean isNewUser = Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser();
                         String uid = Objects.requireNonNull(auth.getCurrentUser()).getUid();
                         String url = "https://hacktiv8-finalproject-default-rtdb.asia-southeast1.firebasedatabase.app/";
-
                         DatabaseReference userRef = FirebaseDatabase.getInstance(url).getReference().child("users").child(uid);
                         if (isNewUser) {
                             // Jika pengguna baru, tambahkan data baru ke Realtime Database
@@ -115,46 +109,14 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
                                     // Handle error ketika membaca dari Realtime Database
-
-                                    // Contoh 1: Menampilkan pesan ke logcat
-                                    Log.e("DatabaseError", "Error reading from Realtime Database", error.toException());
-
-                                    // Contoh 2: Menampilkan pesan Toast kepada pengguna
-                                    Toast.makeText(LoginActivity.this, "Error reading from Realtime Database", Toast.LENGTH_SHORT).show();
-
-                                    // Contoh 3: Menampilkan pesan dialog kepada pengguna
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                    builder.setTitle("Error")
-                                            .setMessage("Error reading from Realtime Database: " + error.getMessage())
-                                            .setPositiveButton("OK", null)
-                                            .show();
-
-                                    // Dan sebagainya...
+                                    // ...
                                 }
                             });
                         }
-                    }
-                    else {
+                    } else {
                         // Jika autentikasi gagal, handle error
                         // Misalnya, tampilkan pesan error kepada pengguna
                         // ...
-
-                        // Jika autentikasi gagal, handle error
-
-                        // Contoh 1: Menampilkan pesan ke logcat
-                        Log.e("AuthenticationError", "Firebase Authentication failed", task.getException());
-
-                        // Contoh 2: Menampilkan pesan Toast kepada pengguna
-                        Toast.makeText(LoginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
-
-                        // Contoh 3: Menampilkan pesan dialog kepada pengguna
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setTitle("Error")
-                                .setMessage("Authentication failed: " + Objects.requireNonNull(task.getException()).getMessage())
-                                .setPositiveButton("OK", null)
-                                .show();
-
-                        // Dan sebagainya...
                     }
                 });
 
@@ -162,20 +124,6 @@ public class LoginActivity extends AppCompatActivity {
                 // Handle error saat Google Sign-In
                 // Misalnya, tampilkan pesan error kepada pengguna
                 // ...
-                // Handle error saat Google Sign-In
-
-                // Contoh 1: Menampilkan pesan ke logcat
-                Log.e("GoogleSignInError", "Google Sign-In failed", e);
-
-                // Contoh 2: Menampilkan pesan Toast kepada pengguna
-                Toast.makeText(LoginActivity.this, "Google Sign-In failed", Toast.LENGTH_SHORT).show();
-
-                // Contoh 3: Menampilkan pesan dialog kepada pengguna
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                builder.setTitle("Error")
-                        .setMessage("Google Sign-In failed: " + e.getMessage())
-                        .setPositiveButton("OK", null)
-                        .show();
             }
         }
     }

@@ -119,6 +119,7 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 String date1 = data.getString("mHomeTextInputDateGo");
                 String inputFrom = data.getString("mInputFrom");
                 String inputTo = data.getString("mInputTo");
+                int numberSeat = data.getInt("numberSeatFromIntent");
                 int finalPrice = data.getInt("priceTicket");
 
 
@@ -129,6 +130,7 @@ public class ScheduleBusActivity extends AppCompatActivity {
                 intent.putExtra("price", price);
                 intent.putExtra("fasility", fasilityEt);
                 intent.putExtra("departure", departure);
+                intent.putExtra("numberSeat", numberSeat);
 
                 intent.putExtra("mHomeTextInputDateGo", date1);
                 intent.putExtra("mInputFrom", inputFrom);

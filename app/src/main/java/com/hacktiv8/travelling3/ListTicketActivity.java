@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -98,6 +100,8 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
     @Override
     public void onListItemClick(View v, int position) {
         Bus busSelected = list.get(position);
+        TextView seat = v.findViewById(R.id.number_seat);
+        int sumSeat = Integer.parseInt(seat.getText().toString());
 
         Bundle data = getIntent().getExtras();
         assert data != null;
@@ -112,7 +116,7 @@ public class ListTicketActivity extends AppCompatActivity implements BusAdapter.
         intent.putExtra("price", busSelected.getPrice());
         intent.putExtra("fasility", busSelected.getFacility());
         intent.putExtra("departure", busSelected.getDeparture());
-
+        intent.putExtra("sumSeat", sumSeat);
         intent.putExtra("mHomeTextInputDateGo", date);
         intent.putExtra("mInputFrom", inputFrom);
         intent.putExtra("mInputTo", inputTo);

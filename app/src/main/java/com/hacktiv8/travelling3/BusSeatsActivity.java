@@ -134,6 +134,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
             String date1 = dataFromIntent.getString("mHomeTextInputDateGo");
             String inputFrom = dataFromIntent.getString("mInputFrom");
             String inputTo = dataFromIntent.getString("mInputTo");
+            int numberSeat = dataFromIntent.getInt("sumSeat");
 
             // Menambahkan data ke Intent
             intent.putExtra("keyFromIntent", keyFromIntent);
@@ -142,6 +143,8 @@ public class BusSeatsActivity extends AppCompatActivity  {
             intent.putExtra("priceFromIntent", priceFromIntent);
             intent.putExtra("facilityFromIntent", facilityFromIntent);
             intent.putExtra("departureFromIntent", departureFromIntent);
+            intent.putExtra("numberSeatFromIntent", numberSeat);
+
 
             intent.putExtra("mHomeTextInputDateGo", date1);
             intent.putExtra("mInputFrom", inputFrom);
@@ -187,7 +190,7 @@ public class BusSeatsActivity extends AppCompatActivity  {
     private void updateSeatTvText() {
         StringBuilder selectedSeatsText = new StringBuilder();
         for (int seat : selectedSeats) {
-            selectedSeatsText.append(seat).append(" ");
+            selectedSeatsText.append("S").append(seat).append(" ");
         }
         seatTv.setText(selectedSeatsText.toString().trim());
     }
