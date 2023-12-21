@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class YourTicketActivity extends AppCompatActivity {
-    // Inisialisasi Firebase
+
     private DatabaseReference myRef;
     private FirebaseAuth auth;
 
@@ -55,8 +55,10 @@ public class YourTicketActivity extends AppCompatActivity {
                     String noKursi = snapshot.child("noKursi").getValue(String.class);
                     String tanggalKeberangkatan = snapshot.child("tanggalKeberangkatan").getValue(String.class);
                     String tujuanBis = snapshot.child("tujuanBis").getValue(String.class);
+                    String tanggalPembelian = snapshot.child("tanggalPembelian").getValue(String.class);
+                    String nomerBooking = snapshot.child("nomerBooking").getValue(String.class);
 
-                    dataArrayList.add(new YourTicketModel(namaPenumpang, asalBis, tujuanBis, tanggalKeberangkatan, clasBis, noKursi, namaBis, jamPergi, harga));
+                    dataArrayList.add(new YourTicketModel(namaPenumpang, asalBis, tujuanBis, tanggalKeberangkatan, clasBis, noKursi, namaBis, jamPergi, harga, tanggalPembelian,nomerBooking));
                 }
 
                 YourTicketAdapter adapter = new YourTicketAdapter(YourTicketActivity.this, R.layout.item_your_ticket, dataArrayList);

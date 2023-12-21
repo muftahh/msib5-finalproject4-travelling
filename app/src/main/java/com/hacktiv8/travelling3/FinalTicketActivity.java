@@ -33,7 +33,7 @@ public class FinalTicketActivity extends AppCompatActivity {
         seatT.setText(getIntent().getStringExtra("inoKursi"));
         busTicket.setText(getIntent().getStringExtra("inamaBis"));
         timeTicket.setText(getIntent().getStringExtra("ijamPergi"));
-        hargaTicket.setText("Rp. " + getIntent().getStringExtra("iharga"));
+        hargaTicket.setText(getIntent().getStringExtra("iharga"));
 
     }
 }

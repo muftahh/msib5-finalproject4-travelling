@@ -36,11 +36,15 @@ public class YourTicketAdapter extends ArrayAdapter<YourTicketModel> {
             TextView tv_jamBerangkatYT = convertView.findViewById(R.id.tv_jamBerangkatYT);
             TextView tv_namaTerminalYT = convertView.findViewById(R.id.tv_namaTerminalYT);
             TextView tv_tujuanBisYT = convertView.findViewById(R.id.tv_tujuanBisYT);
+            TextView tv_tanggalPembelianYT = convertView.findViewById(R.id.tv_tglBuyYourTicket);
+            TextView tv_noBookingYT = convertView.findViewById(R.id.tv_noYourTicket);
 
             tv_namaBisYT.setText(currentItem.getNamaBis());
             tv_jamBerangkatYT.setText(currentItem.getJamPergi());
             tv_namaTerminalYT.setText(currentItem.getAsalBis());
             tv_tujuanBisYT.setText(currentItem.getTujuanBis());
+            tv_tanggalPembelianYT.setText(currentItem.getTanggalPembelian());
+            tv_noBookingYT.setText(currentItem.getNomerBooking());
         }
         return convertView;
     }

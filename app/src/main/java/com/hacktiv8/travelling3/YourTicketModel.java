@@ -10,11 +10,13 @@ public class YourTicketModel {
     private String namaBis;
     private String jamPergi;
     private String harga;
+    private String tanggalPembelian;
+    private String nomerBooking;
 
 
     public YourTicketModel(String namaPenumpang, String asalBis, String tujuanBis,
                            String tanggalKeberangkatan, String classBis,
-                           String noKursi, String namaBis, String jamPergi, String harga) {
+                           String noKursi, String namaBis, String jamPergi, String harga, String tanggalPembelian , String nomerBooking) {
         this.namaPenumpang = namaPenumpang;
         this.asalBis = asalBis;
         this.tujuanBis = tujuanBis;
@@ -24,6 +26,24 @@ public class YourTicketModel {
         this.namaBis = namaBis;
         this.jamPergi = jamPergi;
         this.harga = harga;
+        this.tanggalPembelian = tanggalPembelian;
+        this.nomerBooking = nomerBooking;
+    }
+
+    public String getTanggalPembelian() {
+        return tanggalPembelian;
+    }
+
+    public void setTanggalPembelian(String tanggalPembelian) {
+        this.tanggalPembelian = tanggalPembelian;
+    }
+
+    public String getNomerBooking() {
+        return nomerBooking;
+    }
+
+    public void setNomerBooking(String nomerBooking) {
+        this.nomerBooking = nomerBooking;
     }
 
     public String getNamaPenumpang() {

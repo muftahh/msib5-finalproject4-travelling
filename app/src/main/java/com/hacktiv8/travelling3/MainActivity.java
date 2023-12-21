@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,7 +52,11 @@ public class MainActivity extends AppCompatActivity {
         homeBtnInputDateReturn = findViewById(R.id.homeBtnInputDateReturn);
         homeBtnSearch = findViewById(R.id.homeBtnSearch);
 
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+        String formattedDate = sdf.format(today);
 
         auth = FirebaseAuth.getInstance();
 
@@ -102,6 +107,22 @@ public class MainActivity extends AppCompatActivity {
         String mInputTo = homeInputTo.getSelectedItem().toString();
         String mHomeTextInputDateGo = homeTextInputDateGo.getText().toString();
         String mHomeTextInputDateReturn = homeTextInputDateReturn.getText().toString();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+        Calendar selectedDateGo = Calendar.getInstance();
+        Calendar selectedDateReturn = Calendar.getInstance();
+        try {
+            selectedDateGo.setTime(sdf.parse(mHomeTextInputDateGo));
+            selectedDateReturn.setTime(sdf.parse(mHomeTextInputDateReturn));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (isDateBeforeToday(selectedDateGo) || isDateBeforeToday(selectedDateReturn)) {
+            Toast.makeText(MainActivity.this, "Pilih tanggal hari ini atau esok hari", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (mInputFrom.equals("Pilih") || mInputTo.equals("Pilih") || mHomeTextInputDateGo.equals("DD MMM YYYY") ){
             Toast.makeText(MainActivity.this, "Silahkan pilih Tujuan dan tanggal", Toast.LENGTH_SHORT).show();
         }else {
@@ -141,5 +162,14 @@ public class MainActivity extends AppCompatActivity {
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
+    }
+    private boolean isDateBeforeToday(Calendar selectedDate) {
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 0);
+        today.set(Calendar.MINUTE, 0);
+        today.set(Calendar.SECOND, 0);
+        today.set(Calendar.MILLISECOND, 0);
+
+        return selectedDate.before(today);
     }
 }

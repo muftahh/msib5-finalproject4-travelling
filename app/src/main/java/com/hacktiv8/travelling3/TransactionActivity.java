@@ -14,7 +14,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -45,6 +48,8 @@ public class TransactionActivity extends AppCompatActivity {
 
         int finalSumSeat = numberSeat - sumSeat;
 
+        String randomData = generateRandomString();
+
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         String formattedPrice = decimalFormat.format(price);
 
@@ -59,10 +64,17 @@ public class TransactionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    Calendar calendar = Calendar.getInstance();
+                    Date today = calendar.getTime();
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                    String formattedDate = sdf.format(today);
+
                     auth = FirebaseAuth.getInstance();
                     String uid = auth.getCurrentUser().getUid();
                     String baseUrl = getResources().getString(R.string.base_url);
                     database = FirebaseDatabase.getInstance(baseUrl).getReference("users").child(uid).child("Ticket").push();
+
                     Map<String, Object> ticketData = new HashMap<>();
                     ticketData.put("asalBis", from);
                     ticketData.put("classBis", clas);
@@ -73,6 +85,10 @@ public class TransactionActivity extends AppCompatActivity {
                     ticketData.put("noKursi", seat);
                     ticketData.put("tanggalKeberangkatan", date);
                     ticketData.put("tujuanBis", destination);
+                    ticketData.put("tanggalPembelian", formattedDate);
+                    ticketData.put("nomerBooking", randomData);
+
+
                     database.setValue(ticketData);
 
                       try {
@@ -121,6 +137,32 @@ public class TransactionActivity extends AppCompatActivity {
         });
 
     }
+
+    private String generateRandomString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append((int) (Math.random() * 10));
+
+        char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        for (int i = 0; i < 3; i++) {  // Tambahkan 3 karakter acak
+            char c = chars[(int) (Math.random() * chars.length)];
+            stringBuilder.append(c);
+        }
+
+        stringBuilder.append((int) (Math.random() * 10));
+
+        for (int i = 0; i < 3; i++) {
+            char c = chars[(int) (Math.random() * chars.length)];
+            stringBuilder.append(c);
+        }
+
+        stringBuilder.append((int) (Math.random() * 10));
+
+        return stringBuilder.toString();
+    }
+
+
+
 
 
 }

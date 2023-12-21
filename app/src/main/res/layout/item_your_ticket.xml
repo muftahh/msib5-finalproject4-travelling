@@ -62,62 +62,55 @@
             />
 
         <TextView
-            android:id="@+id/tv_kodeBisYT"
-            android:text="P1923NM"
-            android:layout_marginStart="20dp"
+            android:id="@+id/tv_jamBerangkatYT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_namaBisYT"
-            app:layout_constraintBottom_toBottomOf="@id/tv_namaBisYT"
-            />
-
-        <TextView
-            android:id="@+id/tv_jamBerangkatYT"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
             android:text="12:12"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tv_namaBisYT"
-            app:layout_constraintTop_toBottomOf="@id/tv_namaBisYT"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_namaTerminalYT"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_namaTerminalYT"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namaTerminalYT" />
 
         <TextView
             android:id="@+id/tv_namaTerminalYT"
-            android:text="Terminal Amplas"
-            android:textSize="15sp"
-            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_jamBerangkatYT"
-            app:layout_constraintBottom_toBottomOf="@id/tv_jamBerangkatYT"
-            />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Terminal Amplas"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namaBisYT" />
 
         <TextView
             android:id="@+id/tv_tujuanBisYT"
-            android:text="Medan"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:paddingBottom="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tv_namaTerminalYT"
-            app:layout_constraintTop_toBottomOf="@id/tv_namaTerminalYT"
-            />
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="10dp"
+            android:text="Medan"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/img_statusPembayaranYT"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toEndOf="@+id/tv_namaTerminalYT"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namaBisYT" />
 
         <TextView
             android:id="@+id/tv_statusPembayaranYT"
-            android:text="Paid"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="#61CA5F"
-            android:layout_marginEnd="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/tv_namaTerminalYT"
-            />
+            android:layout_marginEnd="28dp"
+            android:text="Paid"
+            android:textColor="#61CA5F"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tujuanBisYT"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:id="@+id/img_statusPembayaranYT"
