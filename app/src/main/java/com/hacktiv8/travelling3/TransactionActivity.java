@@ -70,6 +70,9 @@ public class TransactionActivity extends AppCompatActivity {
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
                     String formattedDate = sdf.format(today);
 
+                    String noBooking = "No."+randomData;
+                    String tglOrder = "Order : "+formattedDate;
+
                     auth = FirebaseAuth.getInstance();
                     String uid = auth.getCurrentUser().getUid();
                     String baseUrl = getResources().getString(R.string.base_url);
@@ -85,9 +88,9 @@ public class TransactionActivity extends AppCompatActivity {
                     ticketData.put("noKursi", seat);
                     ticketData.put("tanggalKeberangkatan", date);
                     ticketData.put("tujuanBis", destination);
-                    ticketData.put("tanggalPembelian", formattedDate);
-                    ticketData.put("nomerBooking", randomData);
-
+                    ticketData.put("tanggalPembelian", tglOrder);
+                    ticketData.put("nomerBooking", noBooking);
+                    ticketData.put("keyBus", keyBus);
 
                     database.setValue(ticketData);
 
