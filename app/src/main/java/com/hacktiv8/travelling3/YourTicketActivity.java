@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,17 +24,19 @@ import java.util.Arrays;
 public class YourTicketActivity extends AppCompatActivity {
     // Inisialisasi Firebase
     private DatabaseReference myRef;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_your_ticket);
 
-        String url = "https://hacktiv8-finalproject-default-rtdb.asia-southeast1.firebasedatabase.app/";
-        String userID = "vu5KHUiljRcZSjyODi9jtCGXZYq1";
-        FirebaseDatabase database = FirebaseDatabase.getInstance(url);
+        auth = FirebaseAuth.getInstance();
+        String uid = auth.getCurrentUser().getUid();
+        String baseUrl = getResources().getString(R.string.base_url);
+        FirebaseDatabase database = FirebaseDatabase.getInstance(baseUrl);
         myRef = database.getReference().child("users")
-                .child(userID)
+                .child(uid)
                 .child("Ticket");
 
         myRef.addValueEventListener(new ValueEventListener() {
