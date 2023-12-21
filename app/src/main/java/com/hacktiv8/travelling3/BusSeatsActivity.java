@@ -120,6 +120,10 @@ public class BusSeatsActivity extends AppCompatActivity  {
         
 
         done.setOnClickListener(v -> {
+            if (selectedSeats.isEmpty()) {
+                Toast.makeText(this, "Silahkan pilih bangku minimal 1", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(BusSeatsActivity.this, ScheduleBusActivity.class);
 
             // Mendapatkan data dari getIntent()
