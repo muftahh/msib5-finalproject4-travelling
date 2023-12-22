@@ -23,13 +23,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageButton homeBtnKembali, homeBtnAccount;
+    private ImageButton homeBtnAccount;
     private Spinner homeInputFrom, homeInputTo;
     private TextView homeTextInputDateGo, homeTextInputDateReturn;
-    private ImageButton homeBtnInputDateGo, homeBtnInputDateReturn;
-    private MaterialButton homeBtnSearch,mBtnMyTicket;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
     private FirebaseAuth auth;
@@ -42,15 +41,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dateFormatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
 
-        homeBtnKembali = findViewById(R.id.homeBtnKembali);
-        homeBtnAccount = findViewById(R.id.homeBtnAccount);
+        ImageButton homeBtnKembali = findViewById(R.id.homeBtnKembali);
         homeInputFrom = findViewById(R.id.homeInputFrom);
         homeInputTo = findViewById(R.id.homeInputTo);
         homeTextInputDateGo = findViewById(R.id.homeTextInputDateGo);
         homeTextInputDateReturn = findViewById(R.id.homeTextInputDateReturn);
-        homeBtnInputDateGo = findViewById(R.id.homeBtnInputDateGo);
-        homeBtnInputDateReturn = findViewById(R.id.homeBtnInputDateReturn);
-        homeBtnSearch = findViewById(R.id.homeBtnSearch);
+        ImageButton homeBtnInputDateGo = findViewById(R.id.homeBtnInputDateGo);
+        ImageButton homeBtnInputDateReturn = findViewById(R.id.homeBtnInputDateReturn);
+        MaterialButton homeBtnSearch = findViewById(R.id.homeBtnSearch);
 
         Calendar calendar = Calendar.getInstance();
         Date today = calendar.getTime();
@@ -60,46 +58,30 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        mBtnMyTicket = findViewById(R.id.btnMyTicket);
+        MaterialButton mBtnMyTicket = findViewById(R.id.btnMyTicket);
         mBtnMyTicket.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, YourTicketActivity.class);
             startActivity(intent);
         });
 
-        homeBtnKembali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lakukan logout dari Firebase
-                auth.signOut();
+        homeBtnKembali.setOnClickListener(v -> {
+            // Lakukan logout dari Firebase
+            auth.signOut();
 
-                // Pindahkan ke SplashScreenActivity
-                Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
-                // Tambahkan flag untuk membersihkan tumpukan aktivitas sebelumnya
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish(); // Akhiri aktivitas saat ini
-            }
-        });
-
-        homeBtnInputDateGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialogGo();
-            }
-        });
-        homeBtnInputDateReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialogReturn();
-            }
+            // Pindahkan ke SplashScreenActivity
+            Intent intent = new Intent(MainActivity.this, SplashScreenActivity.class);
+            // Menampilkan toast "Pembayaran dibatalkan"
+            Toast.makeText(MainActivity.this, "Logout Berhasil", Toast.LENGTH_SHORT).show();
+            // Tambahkan flag untuk membersihkan tumpukan aktivitas sebelumnya
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish(); // Akhiri aktivitas saat ini
         });
 
-        homeBtnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchTicket();
-            }
-        });
+        homeBtnInputDateGo.setOnClickListener(v -> showDateDialogGo());
+        homeBtnInputDateReturn.setOnClickListener(v -> showDateDialogReturn());
+
+        homeBtnSearch.setOnClickListener(v -> searchTicket());
     }
 
     private void searchTicket() {
@@ -112,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
         Calendar selectedDateGo = Calendar.getInstance();
         Calendar selectedDateReturn = Calendar.getInstance();
         try {
-            selectedDateGo.setTime(sdf.parse(mHomeTextInputDateGo));
-            selectedDateReturn.setTime(sdf.parse(mHomeTextInputDateReturn));
+            selectedDateGo.setTime(Objects.requireNonNull(sdf.parse(mHomeTextInputDateGo)));
+            selectedDateReturn.setTime(Objects.requireNonNull(sdf.parse(mHomeTextInputDateReturn)));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,28 +119,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void showDateDialogGo(){
         Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
+        datePickerDialog = new DatePickerDialog(this, (view, year, monthOfYear, dayOfMonth) -> {
+            Calendar newDate = Calendar.getInstance();
+            newDate.set(year, monthOfYear, dayOfMonth);
 
-                homeTextInputDateGo.setText(dateFormatter.format(newDate.getTime()));
-            }
+            homeTextInputDateGo.setText(dateFormatter.format(newDate.getTime()));
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();
     }
     private void showDateDialogReturn(){
         Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
+        datePickerDialog = new DatePickerDialog(this, (view, year, monthOfYear, dayOfMonth) -> {
+            Calendar newDate = Calendar.getInstance();
+            newDate.set(year, monthOfYear, dayOfMonth);
 
-                homeTextInputDateReturn.setText(dateFormatter.format(newDate.getTime()));
-            }
+            homeTextInputDateReturn.setText(dateFormatter.format(newDate.getTime()));
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.show();

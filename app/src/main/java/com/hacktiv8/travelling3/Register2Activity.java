@@ -18,7 +18,6 @@ public class Register2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_register2);
 
 
-
         register2BtnFinish = findViewById(R.id.register2BtnFinish);
         register2BtnFinish.setOnClickListener(new View.OnClickListener() {
             @Override

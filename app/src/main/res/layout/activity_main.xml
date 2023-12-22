@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/homeHeaader"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="50dp"
         android:background="@drawable/bg_purple"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-
             android:id="@+id/homeBtnKembali"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,17 +36,6 @@
             android:text="Bus Travel"
             android:textColor="@color/white"
             android:textSize="18sp" />
-
-        <ImageButton
-            android:id="@+id/homeBtnAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:scaleType="fitXY"
-            android:src="@drawable/baseline_person_24" />
 
     </RelativeLayout>
 

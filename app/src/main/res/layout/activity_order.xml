@@ -61,7 +61,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
+        android:id="@+id/constraintLayout9"
         android:layout_width="357dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -94,53 +94,11 @@
                 android:id="@+id/passager_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 android:backgroundTint="@color/gray"
                 android:ems="10"
                 android:hint="Passanger Name"
                 android:inputType="text" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/passager_age"
-                    android:layout_width="65dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/gray"
-                    android:ems="10"
-                    android:hint="Age"
-                    android:inputType="number" />
-
-                <TextView
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:paddingEnd="5sp"
-                    android:text="Gender"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/text_gray"
-                    android:textSize="18sp" />
-
-                <RadioGroup
-                    android:id="@+id/rg_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <RadioButton
-                        android:id="@+id/rb_male"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Male" />
-
-                    <RadioButton
-                        android:id="@+id/rb_female"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Female" />
-                </RadioGroup>
-
-            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -154,12 +112,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Spinner
-                    android:id="@+id/number_spiner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
-
                 <EditText
                     android:id="@+id/passager_phone"
                     android:layout_width="wrap_content"
@@ -172,39 +124,25 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-            </LinearLayout>
-
         </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/order_bt"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button_custom1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="@color/warnaBtn"
+        android:text="CHECKOUT"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="BOOK NOW"
-        app:layout_constraintBottom_toBottomOf="@+id/order_bt"
-        app:layout_constraintEnd_toEndOf="@+id/order_bt"
-        app:layout_constraintStart_toStartOf="@+id/order_bt"
-        app:layout_constraintTop_toTopOf="@+id/order_bt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -131,6 +132,8 @@ public class TransactionActivity extends AppCompatActivity {
                       }
 
                     Intent intent = new Intent(TransactionActivity.this, MainActivity.class);
+                    Toast.makeText(TransactionActivity.this, "Pembayaran Berhasil", Toast.LENGTH_SHORT).show();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 
                 } catch (Exception e) {

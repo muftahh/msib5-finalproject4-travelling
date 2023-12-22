@@ -23,7 +23,7 @@
             android:id="@+id/buttonBackDetailPayment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"/>
+            android:src="@drawable/baseline_cancel_24"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -93,7 +93,6 @@
                 android:layout_height="wrap_content"
                 android:text="Bus Name"
                 android:textColor="@color/black"
-
                 android:textSize="15sp"
                 tools:ignore="TextSizeCheck" />
 
@@ -170,26 +169,27 @@
 
                             <TextView
                                 android:id="@+id/detailPaymentFrom"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:text="Dari"
                                 android:textAllCaps="true"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:layout_marginHorizontal="20sp"
-                                android:text="TUJUAN"/>
+                                android:layout_weight="1"
+                                android:text="TUJUAN"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/detailPaymentTo"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textAllCaps="true"
                                 android:text="TUJUAN"
+                                android:textAllCaps="true"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -265,6 +265,7 @@
                         android:textColor="@color/black"/>
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
@@ -361,37 +362,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        tools:layout_editor_absoluteX="-16dp">
-
-        <ImageButton
-            android:id="@+id/pay"
-            android:layout_width="120sp"
-            android:layout_height="45sp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/button_custom1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bayar"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/pay"
-            app:layout_constraintEnd_toEndOf="@+id/pay"
-            app:layout_constraintStart_toStartOf="@+id/pay"
-            app:layout_constraintTop_toTopOf="@+id/pay" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,36 +34,51 @@
 
     <ImageView
         android:id="@+id/register1Img1"
-        android:layout_width="341dp"
-        android:layout_height="353dp"
+        android:layout_width="271dp"
+        android:layout_height="271dp"
         android:layout_marginTop="15dp"
         android:src="@drawable/register_img"
-        app:layout_constraintBottom_toTopOf="@+id/register1Text3"
+        app:layout_constraintBottom_toTopOf="@+id/register1InputName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register1Text2" />
+        app:layout_constraintTop_toBottomOf="@id/register1Text2"
+        app:layout_constraintVertical_bias="0.369" />
 
-    <TextView
-        android:id="@+id/register1Text3"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/register1InputName"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="295dp"
-        android:layout_marginBottom="8dp"
-        android:text="Phone Number"
-        android:textSize="13sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/baseline_crop_landscape_24"
+        android:hint="Your Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/register1InputPhone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Name"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/register1InputName"
+        app:layout_constraintEnd_toEndOf="@+id/register1InputName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register1InputName" />
 
     <EditText
         android:id="@+id/register1InputPhone"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/baseline_crop_landscape_24"
         android:hint="Your phone number"
         android:inputType="number"
@@ -72,7 +87,21 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/register1BtnRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/register1Text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Phone Number"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/register1InputPhone"
+        app:layout_constraintEnd_toEndOf="@+id/register1InputPhone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register1InputPhone" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/register1BtnRegister"

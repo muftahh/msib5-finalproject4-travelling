@@ -5,13 +5,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -27,8 +23,6 @@ public class DetailPaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_payment);
 
-
-
         TextView passangerName = findViewById(R.id.detailPaymentName);
         TextView passangerBus = findViewById(R.id.detailPaymentBusName);
         TextView passangerSeat = findViewById(R.id.detailPaymentBusSeats);
@@ -38,6 +32,15 @@ public class DetailPaymentActivity extends AppCompatActivity {
         TextView passangerDate = findViewById(R.id.detailPaymentDate);
         TextView passangerPrice = findViewById(R.id.detailPaymentPrice);
 
+        ImageView cancel = findViewById(R.id.buttonBackDetailPayment);
+
+        cancel.setOnClickListener(v -> {
+            Intent intent = new Intent(DetailPaymentActivity.this, MainActivity.class);
+            Toast.makeText(DetailPaymentActivity.this, "Pembelian dibatalkan", Toast.LENGTH_SHORT).show();
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -53,7 +56,6 @@ public class DetailPaymentActivity extends AppCompatActivity {
             }
 
         }
-
 
         Bundle data = getIntent().getExtras();
         assert data != null;
@@ -82,41 +84,25 @@ public class DetailPaymentActivity extends AppCompatActivity {
         passangerDate.setText(date);
         passangerPrice.setText(formattedPrice);
 
-        ImageButton pay = findViewById(R.id.pay);
-        pay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DetailPaymentActivity.this, TransactionActivity.class);
-                intent.putExtra("keyBus", key);
-                intent.putExtra("ptBus", ptName);
-                intent.putExtra("userName", name);
-                intent.putExtra("from", from);
-                intent.putExtra("destination", to);
-                intent.putExtra("date", date);
-                intent.putExtra("time", departure);
-                intent.putExtra("seat", Seat);
-                intent.putExtra("sumSeat", sumSeat);
-                intent.putExtra("price", finalPrice);
-                intent.putExtra("clas", "Ekonomi");
-                intent.putExtra("facility", facility);
-                intent.putExtra("numberSeat", numberSeat);
-                startActivity(intent);
-            }
-        });
-
         ConstraintLayout indomaretLayout = findViewById(R.id.indomaret);
-        indomaretLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pay(view);
-            }
+        indomaretLayout.setOnClickListener(view -> {
+            Intent intent1 = new Intent(DetailPaymentActivity.this, TransactionActivity.class);
+            intent1.putExtra("keyBus", key);
+            intent1.putExtra("ptBus", ptName);
+            intent1.putExtra("userName", name);
+            intent1.putExtra("from", from);
+            intent1.putExtra("destination", to);
+            intent1.putExtra("date", date);
+            intent1.putExtra("time", departure);
+            intent1.putExtra("seat", Seat);
+            intent1.putExtra("sumSeat", sumSeat);
+            intent1.putExtra("price", finalPrice);
+            intent1.putExtra("clas", "Ekonomi");
+            intent1.putExtra("facility", facility);
+            intent1.putExtra("numberSeat", numberSeat);
+            startActivity(intent1);
+
         });
     }
 
-    // Metode yang akan dipanggil saat tombol diklik
-    public void pay(View view) {
-        // Logika yang ingin Anda jalankan saat tombol diklik
-        Toast.makeText(this, "Button Indomaret Clicked", Toast.LENGTH_SHORT).show();
-        // Tambahan logika atau aksi yang diinginkan
-    }
 }

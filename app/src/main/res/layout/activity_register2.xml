@@ -8,42 +8,42 @@
 
     <ImageView
         android:id="@+id/register2Img1"
-        android:src="@drawable/register_img"
-        android:layout_marginTop="50dp"
         android:layout_width="304dp"
         android:layout_height="326dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/register_img"
+        app:layout_constraintBottom_toTopOf="@+id/register2Text1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/register2Text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="Everything's up!"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/register2Text2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register2Img1"
-        />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/register2Text2"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="128dp"
         android:text="@string/register2Text2"
         android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/register2BtnFinish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register2Text1"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/register2BtnFinish"
